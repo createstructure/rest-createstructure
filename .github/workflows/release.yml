@@ -1,0 +1,21 @@
+name: Publish rest
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: update
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependences
+      run: |
+        sudo apt-get update
+        sudo apt-get install ncftp -y
+    - name: Push folders
+      run: |
+        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest/parts bin/parts
+        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest/product bin/product
