@@ -59,6 +59,6 @@ Repo containing the public part of the REST/API
 ---
 Made w/ :love: by Castellani Davide 
 If you have any problem please contact me:
-- [Discussion](https://github.com/createstructure/createstructure/discussions/new) and choose "core-createstructure" category
-- [Issue](https://github.com/createstructure/core-createstructure/issues/new)
+- [Discussion](https://github.com/createstructure/createstructure/discussions/new) and choose "rest-createstructure" category
+- [Issue](https://github.com/createstructure/rest-createstructure/issues/new)
 - [help@castellanidavide.it](mailto:help@castellanidavide.it)
