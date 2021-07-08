@@ -17,5 +17,5 @@ jobs:
         sudo apt-get install ncftp -y
     - name: Push folders
       run: |
-        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest/parts bin/parts
-        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest/product bin/product
+        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest bin/parts
+        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest bin/product

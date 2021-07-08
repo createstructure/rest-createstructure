@@ -766,7 +766,7 @@
 			$data["token"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["token"])));
 			$data["answers"] = array();
 			$data["answers"]["name"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["answers"]["name"])));
-			$data["answers"]["template"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . "-", "/")."]/", '', $input["answers"]["template"])));
+			$data["answers"]["template"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . "-" . "\/", "/")."]/", '', $input["answers"]["template"])));
 			$data["answers"]["descr"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums . " ", "/")."]/", '', $input["answers"]["descr"])));
 			$data["answers"]["prefix"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums . "-", "/")."]/", '', $input["answers"]["prefix"])));
 			$data["answers"]["team"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["answers"]["team"])));
