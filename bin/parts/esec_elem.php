@@ -37,7 +37,7 @@
 		 */ 
 		public function __construct($db){
 			$this->conn = $db;
-			$crypto = new Crypto($this->conn);
+			$this->crypto = new Crypto($this->conn);
 		}
 		
 		/**
