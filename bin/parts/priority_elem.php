@@ -523,7 +523,7 @@
 
 			// sanitize
 			$data = array();
-			$data["username"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["username"])));
+			$data["username"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums . "-", "/")."]/", '', $input["username"])));
 			$data["token"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["token"])));
 			$data["server_id"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->nums, "/")."]/", '', $input["server_id"])));
 			$data["instruction"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars, "/")."]/", '', $input["instruction"])));

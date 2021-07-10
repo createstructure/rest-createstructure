@@ -14,8 +14,6 @@
 		// class variabile(s)
 		private $conn;
 		private $table_name = "languages";
-		private $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		private $nums = "0123456789";
 
 		/**
 		 * Constructor

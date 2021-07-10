@@ -762,7 +762,7 @@
 
 			// sanitize
 			$data = array();
-			$data["username"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["username"])));
+			$data["username"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums . "-", "/")."]/", '', $input["username"])));
 			$data["token"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["token"])));
 			$data["answers"] = array();
 			$data["answers"]["name"] = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $input["answers"]["name"])));

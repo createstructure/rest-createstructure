@@ -48,7 +48,7 @@
 			$stmt = $this->conn->prepare($query);
 
 			// Sanitize
-			$username = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums, "/")."]/", '', $username)));
+			$username = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->chars . $this->nums. "-", "/")."]/", '', $username)));
 			$sub_id = htmlspecialchars(strip_tags(preg_replace("/[^".preg_quote($this->nums, "/")."]/", '', strval($sub_id))));
 			
 			// Bind values
