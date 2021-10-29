@@ -13,7 +13,7 @@
   - [Requirements](#requirements)
 
 ## Description
-Repo containing the public part of the REST/API
+Repo containing the public part of the REST API
 
 ## Directories structure
 ```
@@ -22,43 +22,34 @@ Repo containing the public part of the REST/API
 │   │   ├── database.php
 │   │   ├── key.php
 │   │   └── webhook.php
-│   ├── parts
-│   │   ├── create_user_elem.php
-│   │   ├── crypto_elem.php
-│   │   ├── esec_elem.php
-│   │   ├── languages_elem.php
-│   │   ├── priority_elem.php
-│   │   └── subscription_elem.php
-│   └── product
-│       ├── create.php
-│       ├── create_priority.php
-│       ├── create_user.php
-│       ├── esec_status.php
-│       ├── finished_priority.php
-│       ├── finished_work.php
-│       ├── give_work.php
-│       ├── languages.php
-│       ├── started_work.php
-│       └── subscription.php
-├── docs
-│   ├── CHANGELOG.md
-│   ├── LICENSE
-│   └── README.md
-├── .git
-│   └── ...
-├── .github
-│   └── workflows
-│       └── release.yml
-└── .gitignore   
+│   ├── core
+│   │   ├── action.php
+│   │   ├── auth.php
+│   │   ├── create_repo.php
+│   │   ├── help.php
+│   │   ├── server_get_job_info.php
+│   │   ├── server_get_priority.php
+│   │   ├── server_reserve_job.php
+│   │   ├── server_set_job_done.php
+│   │   ├── server_set_priority_done.php
+│   │   ├── server_set_priority.php
+│   │   ├── splitter.php
+│   │   └── welcome.php
+│   ├── index.php
+│   └── webhook.php
+└── docs
+    ├── CHANGELOG.md
+    ├── LICENSE
+    └── README.md
 ```
 
 ## Requirements
+Here all the requirements to run this repo:
  - php (>= 7.4.16)
- - DB
+ - DB (MySQL)
 
 ---
 Made w/ :love: by Castellani Davide 
-If you have any problem please contact me:
-- [Discussion](https://github.com/createstructure/createstructure/discussions/new) and choose "rest-createstructure" category
+If you want to contribute you can start with:
+- [Discussion](https://github.com/createstructure/rest-createstructure/discussions)
 - [Issue](https://github.com/createstructure/rest-createstructure/issues/new)
-- [help@castellanidavide.it](mailto:help@castellanidavide.it)

@@ -1,4 +1,4 @@
-name: Publish rest
+name: Publish REST API
 on:
   release:
     types: [published]
@@ -11,11 +11,12 @@ jobs:
       name: update
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependences
+    - name: install dependences
       run: |
-        sudo apt-get update
+        sudo apt-get update -y
         sudo apt-get install ncftp -y
-    - name: Push folders
+    - name: push
       run: |
-        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest bin/parts
-        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.CORE }}/rest bin/product
+        ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.API_URL }} bin/core
+        ncftpput -a -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.API_URL }} bin/index.php
+        ncftpput -a -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.API_URL }} bin/webhook.php

@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * Manage DB credentials
+	 * Manage DB
 	 *
 	 * PHP version 7.4.16
 	 *
@@ -12,27 +12,29 @@
 
 	class Database{
 		// class variabile(s)
-		private $servername = "<YOUR_DB_NAME>";
-		private $username = "<YOUR_DB_USERNAME>";
-		private $password = "<YOUR_DB_PASSWORD>";
-		private $dbname = "<YOUR_DB_TABLE_NAME>";
+		private $servername = ""; // TODO
+		private $username = ""; // TODO
+		private $password = ""; // TODO
+		private $dbname = ""; // TODO
 		private $conn;
 
 		/**
 		 * Constructor
-		 */ 
+		 */
 		public function __construct(){
 			try{
 				$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+				if ($this->conn->connect_errno)
+					throw new Exception($this->conn->connect_error);
 			}catch(Exception $e){
 				die(
 					json_encode(
 						array(
 								"message" => "error",
 								"error" => "Connection error: " . $e->getMessage()
+							)
 						)
-					)
-				);
+					);
 			}
 		}
 
@@ -41,8 +43,16 @@
 		 *
 		 * @return DB 			DB connection
 		 */ 
-		public function getConnection(){
+		public function get_connection(){
 			return $this->conn;
+		}
+
+		/**
+		 * Close the database connection
+		 */ 
+		public function close_connection(){
+			$this->conn->close();
 		}
 	}
 ?>
+
