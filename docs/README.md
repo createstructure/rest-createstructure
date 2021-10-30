@@ -5,13 +5,13 @@ This repository contains the REST API created for the createstructure service. T
 
 ```
 $GITHUB_REPOSITORY
-├── bin
-│   ├── config
+├── bin # PHP source code
+│   ├── config # configuration file where to store passwords, tokens, ...
 │   │   ├── database.php
 │   │   ├── key.php
 │   │   └── webhook.php
-│   ├── core
-│   │   ├── action.php
+│   ├── core # main part of the REST API
+│   │   ├── action.php # interface for any of the other actions
 │   │   ├── auth.php
 │   │   ├── create_repo.php
 │   │   ├── help.php
@@ -21,12 +21,12 @@ $GITHUB_REPOSITORY
 │   │   ├── server_set_job_done.php
 │   │   ├── server_set_priority.php
 │   │   ├── server_set_priority_done.php
-│   │   ├── splitter.php
+│   │   ├── splitter.php # where the request is splitted to the needed action
 │   │   └── welcome.php
 │   ├── index.php
 │   └── webhook.php
-├── db
-│   ├── functions-procedures
+├── db # DB utilities
+│   ├── functions-procedures # folder containing all the needed functions and procedures
 │   │   ├── CreateRepo.sql
 │   │   ├── CreateServer.sql
 │   │   ├── CreateServerPriority.sql
@@ -39,7 +39,7 @@ $GITHUB_REPOSITORY
 │   │   ├── ServerSetJobDone.sql
 │   │   ├── ServerSetPriority.sql
 │   │   └── ServerSetPriorityDone.sql
-│   └── tables
+│   └── tables # DB tables definition
 │       ├── client.sql
 │       ├── client_account.sql
 │       ├── client_accounts_type.sql
