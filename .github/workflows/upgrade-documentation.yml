@@ -92,8 +92,8 @@ jobs:
         echo "Made w/ :heart: by Castellani Davide" >> _Footer.md
         echo "" >> _Footer.md
         echo "If you want to contribute you can start with:" >> _Footer.md
-        echo "- [Discussion](https://github.com/createstructure/rest-createstructure/discussions)" >> _Footer.md
-        echo "- [Issue](https://github.com/createstructure/rest-createstructure/issues/new)" >> _Footer.md
+        echo "- [Discussion]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/discussions)" >> _Footer.md
+        echo "- [Issue]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/issues/new)" >> _Footer.md
     - name: _Header file
       run: |
         cd wiki
