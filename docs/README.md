@@ -75,7 +75,7 @@ Repo containing the public part of the REST/API
 #### Added
 - Initial version for this repo
 ---
-Made w/ :love: by Castellani Davide
+Made w/ :heart: by Castellani Davide
 
 If you want to contribute you can start with:
 - [Discussion](https://github.com/createstructure/rest-createstructure/discussions)
