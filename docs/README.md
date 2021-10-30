@@ -1,9 +1,36 @@
-# rest-createstructure
-[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)](https://github.com/createstructure/rest-createstructure/blob/v10-beta/docs/LICENSE)
-![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat)
-![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-all-blue?style=flat) 
-[![On GitHub](https://img.shields.io/badge/on%20GitHub-True-green?style=flat&logo=github)](https://github.com/createstructure/rest-createstructure/tree/v10-beta)
+## :octocat: Description :octocat:
+This repository contains the REST API created for the createstructure service. To get more info about how it works and how can you can contribute, please go to the wiki.
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/0b51e5257c0f1aa1f4baee451e6d18b0f5ac84487a259f4b6da45382b27fd9c0/createstructure/rest-createstructure)## :octocat: Directory structure :octocat:
 
+```
+$GITHUB_REPOSITORY
+├── bin
+│   ├── config
+│   │   ├── database.php
+│   │   ├── key.php
+│   │   └── webhook.php
+│   ├── core
+│   │   ├── action.php
+│   │   ├── auth.php
+│   │   ├── create_repo.php
+│   │   ├── help.php
+│   │   ├── server_get_job_info.php
+│   │   ├── server_get_priority.php
+│   │   ├── server_reserve_job.php
+│   │   ├── server_set_job_done.php
+│   │   ├── server_set_priority.php
+│   │   ├── server_set_priority_done.php
+│   │   ├── splitter.php
+│   │   └── welcome.php
+│   ├── index.php
+│   └── webhook.php
+└── docs # documentation
+    ├── CHANGELOG.md
+    ├── LICENSE
+    └── README.md
+
+4 directories, 20 files
+```
 ## :octocat: REST API actions :octocat:
 | name | type | action | request | URL | response | notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -46,37 +73,6 @@ Repo containing the public part of the REST/API
 ### [09.01.01] - 2021-06-19
 #### Added
 - Initial version for this repo
-## :octocat: Directory structure :octocat:
-
-```
-$GITHUB_REPOSITORY
-├── bin
-│   ├── config
-│   │   ├── database.php
-│   │   ├── key.php
-│   │   └── webhook.php
-│   ├── core
-│   │   ├── action.php
-│   │   ├── auth.php
-│   │   ├── create_repo.php
-│   │   ├── help.php
-│   │   ├── server_get_job_info.php
-│   │   ├── server_get_priority.php
-│   │   ├── server_reserve_job.php
-│   │   ├── server_set_job_done.php
-│   │   ├── server_set_priority.php
-│   │   ├── server_set_priority_done.php
-│   │   ├── splitter.php
-│   │   └── welcome.php
-│   ├── index.php
-│   └── webhook.php
-└── docs # documentation
-    ├── CHANGELOG.md
-    ├── LICENSE
-    └── README.md
-
-4 directories, 20 files
-```
 ---
 Made w/ :love: by Castellani Davide
 
