@@ -13,7 +13,8 @@
   - [Requirements](#requirements)
 
 ## Description
-Repo containing the public part of the REST API
+This repository contains the REST API created for the [createstructure service](https://github.com/createstructure).
+To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki). 
 
 ## Directories structure
 ```
@@ -49,7 +50,8 @@ Here all the requirements to run this repo:
  - DB (MySQL)
 
 ---
-Made w/ :love: by Castellani Davide 
+Made w/ :love: by Castellani Davide
+
 If you want to contribute you can start with:
 - [Discussion](https://github.com/createstructure/rest-createstructure/discussions)
 - [Issue](https://github.com/createstructure/rest-createstructure/issues/new)

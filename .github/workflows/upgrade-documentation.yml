@@ -1,0 +1,130 @@
+name: Upgrade documentation (Wiki + README.md)
+on: [workflow_dispatch, push]
+
+jobs:
+  upgrade-documentation:
+    runs-on: ubuntu-latest
+    environment:
+      name: documentation
+    steps:
+    - name: Initial setup
+      run: |
+        sudo apt update -y
+        sudo pip install BeautifulSoup4
+        git clone --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
+        git clone --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -b $(echo ${GITHUB_REF#refs/heads/}) repo
+        rm -f wiki/*.md
+    - name: Home file
+      run: |
+        cd wiki
+        python3 << EOF
+        import urllib.request
+        import json
+        from bs4 import BeautifulSoup
+        def get_json():
+          """ Returns the json with REST description
+          """
+          return json.loads(urllib.request.urlopen("$GITHUB_API_URL/repos/$GITHUB_REPOSITORY").read().decode())
+        def get_social_img():
+          """ Get social image
+          """
+          soup = BeautifulSoup(urllib.request.urlopen("$GITHUB_SERVER_URL/$GITHUB_REPOSITORY").read().decode(), 'html.parser')
+          return soup.find("meta", property="og:image")["content"]
+        def get_content():
+          """ Returns the file content
+          """
+          social_img = get_social_img()
+          file_content = "## :octocat: Description :octocat:\n"
+          file_content += get_json()["description"] + "\n"
+          file_content += f"![$GITHUB_REPOSITORY]({social_img})"
+          return file_content
+        if __name__ == "__main__":
+          open("Home.md", "w+").write(str(get_content()))                    
+        EOF
+    - name: REST-actions file
+      run: |
+        cd wiki
+        python3 << EOF
+        import urllib.request
+        import json 
+        def get_json():
+          """ Returns the json with REST description
+          """
+          return json.loads(urllib.request.urlopen("https://www.castellanidavide.it/other/createstructure/api/").read().decode())["help"]
+        def get_content():
+          """ Returns the file content
+          """
+          file_content = "## :octocat: REST API actions :octocat:\n"
+          headers = ["name", "type", "action", "request", "URL", "response", "notes"]
+          for header in headers:
+            file_content += f"| {header} "
+          file_content += "|\n"
+          file_content += "| --- " * len(headers) + "|\n"
+          for _, action in get_json().items():
+            for header in headers:
+              file_content += f"| {action[header]} "
+            file_content += "|\n"
+          return file_content
+        if __name__ == "__main__":
+          open("REST-Actions.md", "w+").write(str(get_content()))                    
+        EOF
+    - name: changelog file
+      run: |
+        cp repo/docs/CHANGELOG.md wiki/
+        cd wiki
+        sed -i 's/Changelog/:octocat: Changelog :octocat:/g' CHANGELOG.md
+        sed -i 's/# /## /g' CHANGELOG.md
+    - name: Directory structure file
+      run: |
+        cd wiki
+        sudo apt install tree -y
+        echo "## :octocat: Directory structure :octocat:" > Directory-Structure.md
+        echo "" >> Directory-Structure.md
+        echo "\`\`\`" >> Directory-Structure.md
+        tree ../repo >> Directory-Structure.md
+        echo "\`\`\`" >> Directory-Structure.md
+        sed -i 's/..\/repo/$GITHUB_REPOSITORY/g' Directory-Structure.md
+        sed -i 's/docs/docs # documentation/g' Directory-Structure.md
+    - name: _Footer file
+      run: |
+        cd wiki
+        echo "---" > _Footer.md
+        echo "Made w/ :love: by Castellani Davide" >> _Footer.md
+        echo "" >> _Footer.md
+        echo "If you want to contribute you can start with:" >> _Footer.md
+        echo "- [Discussion](https://github.com/createstructure/rest-createstructure/discussions)" >> _Footer.md
+        echo "- [Issue](https://github.com/createstructure/rest-createstructure/issues/new)" >> _Footer.md
+    - name: _Header file
+      run: |
+        cd wiki
+        echo "# rest-createstructure" > _Header.md
+        echo "[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$(echo ${GITHUB_REF#refs/heads/})/docs/LICENSE)" >> _Header.md
+        echo "![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat)" >> _Header.md
+        echo "![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-all-blue?style=flat) " >> _Header.md
+        echo "[![On GitHub](https://img.shields.io/badge/on%20GitHub-True-green?style=flat&logo=github)]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$(echo ${GITHUB_REF#refs/heads/}))" >> _Header.md
+        echo "" >> _Header.md
+    - name: Recreate README.md
+      run: |
+        cat wiki/_Header.md > repo/docs/README.md
+        cat wiki/REST-Actions.md >> repo/docs/README.md
+        cat wiki/CHANGELOG.md >> repo/docs/README.md
+        cat wiki/Directory-Structure.md >> repo/docs/README.md
+        cat wiki/_Footer.md >> repo/docs/README.md
+    - name: git add & commit & upload wiki
+      continue-on-error: true
+      run: |
+        cd wiki
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "help@castellanidavide.it"
+        git add *
+        git commit -m "Upgrade by automatic action"
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git
+    - name: git add & commit & upload repo
+      continue-on-error: true
+      run: |
+        cd repo
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "help@castellanidavide.it"
+        git add *
+        git commit -m "Upgrade by automatic action"
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git
