@@ -1,6 +1,6 @@
 ## :octocat: Description :octocat:
 This repository contains the REST API created for the createstructure service. To get more info about how it works and how can you can contribute, please go to the wiki.
-![createstructure/rest-createstructure](https://opengraph.githubassets.com/0b51e5257c0f1aa1f4baee451e6d18b0f5ac84487a259f4b6da45382b27fd9c0/createstructure/rest-createstructure)
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/cad05156c359e8665206bdb005420539bb843cba414c759a62ce06acf3376749/createstructure/rest-createstructure)
 ## :octocat: Directory structure :octocat:
 
 ```
@@ -25,13 +25,44 @@ $GITHUB_REPOSITORY
 │   │   └── welcome.php
 │   ├── index.php
 │   └── webhook.php
+├── db
+│   ├── functions-procedures
+│   │   ├── CreateRepo.sql
+│   │   ├── CreateServer.sql
+│   │   ├── CreateServerPriority.sql
+│   │   ├── CreateUpdateRemoveClient.sql
+│   │   ├── GetClient.sql
+│   │   ├── ServerGetJobInfo.sql
+│   │   ├── ServerGetPriority.sql
+│   │   ├── ServerGetPublicKey.sql
+│   │   ├── ServerReserveJob.sql
+│   │   ├── ServerSetJobDone.sql
+│   │   ├── ServerSetPriority.sql
+│   │   └── ServerSetPriorityDone.sql
+│   └── tables
+│       ├── client.sql
+│       ├── client_account.sql
+│       ├── client_accounts_type.sql
+│       ├── repo_declaration.sql
+│       ├── repo_log.sql
+│       ├── repo_status.sql
+│       ├── server_list.sql
+│       ├── server_priority_declaration.sql
+│       ├── server_priority_instructions.sql
+│       ├── server_priority_log.sql
+│       ├── server_priority_status.sql
+│       └── server_secrets.sql
 └── docs # documentation
     ├── CHANGELOG.md
+    ├── ERD.svg
     ├── LICENSE
     └── README.md
 
-4 directories, 20 files
+7 directories, 45 files
 ```
+## :octocat: Database structure (ERD) :octocat:
+
+[ERD](https://raw.githubusercontent.com/createstructure/rest-createstructure/v10-beta/docs/README.md)
 ## :octocat: REST API actions :octocat:
 | name | type | action | request | URL | response | notes |
 | --- | --- | --- | --- | --- | --- | --- |
