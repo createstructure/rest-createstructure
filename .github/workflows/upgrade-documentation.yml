@@ -36,7 +36,7 @@ jobs:
           social_img = get_social_img()
           file_content = "## :octocat: Description :octocat:\n"
           file_content += get_json()["description"] + "\n"
-          file_content += f"![$GITHUB_REPOSITORY]({social_img})"
+          file_content += f"![$GITHUB_REPOSITORY]({social_img})\n"
           return file_content
         if __name__ == "__main__":
           open("Home.md", "w+").write(str(get_content()))                    
