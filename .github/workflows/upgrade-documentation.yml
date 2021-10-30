@@ -89,7 +89,7 @@ jobs:
       run: |
         cd wiki
         echo "---" > _Footer.md
-        echo "Made w/ :love: by Castellani Davide" >> _Footer.md
+        echo "Made w/ :heart: by Castellani Davide" >> _Footer.md
         echo "" >> _Footer.md
         echo "If you want to contribute you can start with:" >> _Footer.md
         echo "- [Discussion](https://github.com/createstructure/rest-createstructure/discussions)" >> _Footer.md
