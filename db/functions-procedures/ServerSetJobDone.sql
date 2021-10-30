@@ -1,3 +1,7 @@
+--
+-- Connected with server_set_job_done.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerSetJobDone`(`server_name` TEXT, `server_password` TEXT, `repo_ID` INT) RETURNS int(11)
 BEGIN

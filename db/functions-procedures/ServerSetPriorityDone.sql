@@ -1,3 +1,7 @@
+--
+-- Connected with server_set_priority_done.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerSetPriorityDone`(`server_name` TEXT, `server_password` TEXT, `priority_ID` TEXT) RETURNS int(11)
 BEGIN

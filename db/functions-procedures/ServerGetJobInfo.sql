@@ -1,3 +1,7 @@
+--
+-- Debug function
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerGetJobInfo`(`server_name` TEXT, `server_password` TEXT, `repo_ID` INT) RETURNS text CHARSET latin1
 BEGIN

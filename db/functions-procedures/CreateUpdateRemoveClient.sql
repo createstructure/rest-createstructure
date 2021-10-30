@@ -1,3 +1,7 @@
+--
+-- Connected with webhook.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `CreateUpdateRemoveClient`(`github_username` VARCHAR(39), `accountID` INT) RETURNS int(11)
 BEGIN

@@ -1,3 +1,7 @@
+--
+-- Connected with server_set_priority.php
+--
+
 DELIMITER $$
 CREATE PROCEDURE `CreateServerPriority`(IN `client_ID` VARCHAR(39), IN `instruction` TEXT, IN `server_ID` INT)
 BEGIN

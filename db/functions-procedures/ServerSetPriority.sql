@@ -1,3 +1,7 @@
+--
+-- Connected with server_set_priority.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerSetPriority`(`client_ID` VARCHAR(39), `server_name` TEXT, `priority_instruction` TEXT) RETURNS int(11)
 BEGIN

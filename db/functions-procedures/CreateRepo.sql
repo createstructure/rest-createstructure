@@ -1,3 +1,7 @@
+--
+-- Connected with create_repo.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `CreateRepo`(`client_ID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
 BEGIN

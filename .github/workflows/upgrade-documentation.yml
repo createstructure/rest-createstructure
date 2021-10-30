@@ -90,6 +90,14 @@ jobs:
         tree ../repo >> Directory-Structure.md
         echo "\`\`\`" >> Directory-Structure.md
         sed -i 's/..\/repo/$GITHUB_REPOSITORY/g' Directory-Structure.md
+        sed -i 's/bin/bin # PHP source code/g' Directory-Structure.md
+        sed -i 's/config/config # configuration file where to store passwords, tokens, .../g' Directory-Structure.md
+        sed -i 's/core/core # main part of the REST API/g' Directory-Structure.md
+        sed -i 's/action.php/action.php # interface for any of the other actions/g' Directory-Structure.md
+        sed -i 's/splitter.php/splitter.php # where the request is splitted to the needed action/g' Directory-Structure.md
+        sed -i 's/db/db # DB utilities/g' Directory-Structure.md
+        sed -i 's/functions-procedures/functions-procedures # folder containing all the needed functions and procedures/g' Directory-Structure.md
+        sed -i 's/tables/tables # DB tables definition/g' Directory-Structure.md
         sed -i 's/docs/docs # documentation/g' Directory-Structure.md
     - name: _Footer file
       run: |

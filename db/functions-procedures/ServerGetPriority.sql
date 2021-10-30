@@ -1,3 +1,7 @@
+--
+-- Connected with server_get_priority.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerGetPriority`(`server_name` TEXT, `server_password` TEXT) RETURNS text CHARSET latin1
 BEGIN

@@ -1,3 +1,7 @@
+--
+-- Connected with server_get_job_info.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerGetPublicKey`(`server_name` TEXT, `server_password` TEXT) RETURNS text CHARSET latin1
 BEGIN

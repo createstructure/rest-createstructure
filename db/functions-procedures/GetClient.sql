@@ -1,3 +1,7 @@
+--
+-- Connected with auth.php and other functions
+--
+
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetClient`(`github_username` VARCHAR(39)) RETURNS text CHARSET latin1
 	DETERMINISTIC

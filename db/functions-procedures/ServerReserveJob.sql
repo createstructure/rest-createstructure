@@ -1,3 +1,7 @@
+--
+-- Connected with server_reserve_job.php
+--
+
 DELIMITER $$
 CREATE FUNCTION `ServerReserveJob`(`server_name` TEXT, `server_password` TEXT) RETURNS int(11)
 BEGIN
