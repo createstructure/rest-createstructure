@@ -76,6 +76,7 @@ jobs:
         sed -i 's/# /## /g' CHANGELOG.md
     - name: database-structure file
       run: |
+        cd wiki
         echo "## :octocat: Database structure (ERD) :octocat:" > Database-Structure.md
         echo "" >> Database-Structure.md
         echo "[ERD](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/README.md)" >> Database-Structure.md
