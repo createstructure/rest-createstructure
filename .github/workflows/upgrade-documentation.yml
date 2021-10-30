@@ -74,6 +74,11 @@ jobs:
         cd wiki
         sed -i 's/Changelog/:octocat: Changelog :octocat:/g' CHANGELOG.md
         sed -i 's/# /## /g' CHANGELOG.md
+    - name: database-structure file
+      run: |
+        echo "## :octocat: Database structure (ERD) :octocat:" > Database-Structure.md
+        echo "" >> Database-Structure.md
+        echo "[ERD](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/README.md)" >> Database-Structure.md
     - name: Directory structure file
       run: |
         cd wiki
@@ -108,6 +113,7 @@ jobs:
         cat wiki/_Header.md > repo/docs/README.md
         cat wiki/Home.md > repo/docs/README.md
         cat wiki/Directory-Structure.md >> repo/docs/README.md
+        cat wiki/Database-Structure.md >> repo/docs/README.md
         cat wiki/REST-Actions.md >> repo/docs/README.md
         cat wiki/CHANGELOG.md >> repo/docs/README.md
         cat wiki/_Footer.md >> repo/docs/README.md
