@@ -62,7 +62,7 @@ $GITHUB_REPOSITORY
 ```
 ## :octocat: Database structure (ERD) :octocat:
 
-[ERD](https://raw.githubusercontent.com/createstructure/rest-createstructure/v10-beta/docs/README.md)
+![ERD](https://raw.githubusercontent.com/createstructure/rest-createstructure/v10-beta/docs/ERD.svg)
 ## :octocat: REST API actions :octocat:
 | name | type | action | request | URL | response | notes |
 | --- | --- | --- | --- | --- | --- | --- |
