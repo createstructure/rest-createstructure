@@ -112,13 +112,13 @@ jobs:
         echo "> To do these actions you need to run manually the functions, in the previous example \`CreateUpdateRemoveClient\`" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### Steps:" >> Rebuild_the_REST_API_locally.md
-        echo "1. Install VirtualBox on the PC" >> Rebuild_the_REST_API_locally.md
-        echo "2. Install Ubuntu" >> Rebuild_the_REST_API_locally.md
-        echo "3. Install dependencies" >> Rebuild_the_REST_API_locally.md
-        echo "4. Add PHP source code" >> Rebuild_the_REST_API_locally.md
-        echo "5. Create server" >> Rebuild_the_REST_API_locally.md
-        echo "6. Try REST API" >> Rebuild_the_REST_API_locally.md
-        echo "7. Do the changes/ debug you want " >> Rebuild_the_REST_API_locally.md
+        echo "1. [Install VirtualBox on the PC](#1-install-virtualbox-on-the-pc)" >> Rebuild_the_REST_API_locally.md
+        echo "2. [Install Ubuntu](#2-install-ubuntu)" >> Rebuild_the_REST_API_locally.md
+        echo "3. [Install dependencies](#3-install-dependencies)" >> Rebuild_the_REST_API_locally.md
+        echo "4. [Add PHP source code](#4-add-php-source-code)" >> Rebuild_the_REST_API_locally.md
+        echo "5. [Create server](#5-create-server)" >> Rebuild_the_REST_API_locally.md
+        echo "6. [Use REST API](#6-use-rest-api)" >> Rebuild_the_REST_API_locally.md
+        echo "7. [Do the changes/ debug you want](#7-do-the-changes-debug-you-want)" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### 1. Install VirtualBox on the PC" >> Rebuild_the_REST_API_locally.md
         echo "For installation we suggest VirtualBox, a tool that allows you to create one or more virtual machines :computer:." >> Rebuild_the_REST_API_locally.md
