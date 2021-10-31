@@ -1,5 +1,7 @@
 ## :octocat: Description :octocat:
-This repository contains the REST API created for the createstructure service. To get more info about how it works and how can you can contribute, please go to the wiki.
+This repository contains the REST API created for the createstructure service.
+
+To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
 ![createstructure/rest-createstructure](https://opengraph.githubassets.com/cad05156c359e8665206bdb005420539bb843cba414c759a62ce06acf3376749/createstructure/rest-createstructure)
 ## :octocat: Directory structure :octocat:
 
