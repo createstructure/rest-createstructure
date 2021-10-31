@@ -12,10 +12,10 @@
 
 	class Database{
 		// class variabile(s)
-		private $servername = ""; // TODO
-		private $username = ""; // TODO
-		private $password = ""; // TODO
-		private $dbname = ""; // TODO
+		private $servername = "<YOUR_DB_NAME>"; // TODO
+		private $username = "<YOUR_DB_USERNAME>"; // TODO
+		private $password = "<YOUR_DB_PASSWORD>"; // TODO
+		private $dbname = "<YOUR_DB_TABLE_NAME>"; // TODO
 		private $conn;
 
 		/**
