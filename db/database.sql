@@ -3,6 +3,7 @@
 --
 
 CREATE DATABASE createstructure;
+USE createstructure;
 
 --
 -- Table structure for table `client`
