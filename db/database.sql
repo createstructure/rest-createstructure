@@ -1,4 +1,9 @@
+--
+-- Create DB
+--
+
 CREATE DATABASE createstructure;
+
 --
 -- Table structure for table `client`
 --

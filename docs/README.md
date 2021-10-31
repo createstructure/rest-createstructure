@@ -26,6 +26,7 @@ $GITHUB_REPOSITORY
 │   ├── index.php
 │   └── webhook.php
 ├── db # DB utilities
+│   ├── database.sql
 │   ├── functions-procedures # folder containing all the needed functions and procedures
 │   │   ├── CreateRepo.sql
 │   │   ├── CreateServer.sql
@@ -58,7 +59,7 @@ $GITHUB_REPOSITORY
     ├── LICENSE
     └── README.md
 
-7 directories, 45 files
+7 directories, 46 files
 ```
 ## :octocat: Database structure (ERD) :octocat:
 
