@@ -106,6 +106,104 @@ Repo containing the public part of the REST/API
 ### [09.01.01] - 2021-06-19
 #### Added
 - Initial version for this repo
+## :octocat: Rebuild the REST API locally :octocat:
+Install the REST API locally permits you to do some debug and try new configurations.
+
+> ATTENTION
+>
+> Some features, like subscription with GitHub marketplace, can't be done with the local configuration.
+>
+> To do these actions you need to run manually the functions, in the previous example `CreateUpdateRemoveClient`
+
+### Steps:
+1. Install VirtualBox on the PC
+2. Install Ubuntu
+3. Install dependencies
+4. Add PHP source code
+5. Create server
+6. Try REST API
+7. Do the changes/ debug you want 
+
+### 1. Install VirtualBox on the PC
+For installation we suggest VirtualBox, a tool that allows you to create one or more virtual machines :computer:.
+If any of these crashes, in any case, your PC will not lose data, at most you will have to restart it :smile:.
+
+To install VirtualBox on your PC you need to:
+- Get in into the UEFI
+- Enable the function which name is like "Virtualization" (for each UEFI this step is different but similar)
+- Save the configuration and restart the PC
+- Go to the [VirtualBox website](https://www.virtualbox.org/)
+- Press "Download"
+- Run the downloaded file
+- Follow the installation steps
+
+### 2. Install Ubuntu
+As the OS we suggest to use Ubuntu, because it is lightweight (for RAM and CPU) and it's free.
+
+To install Ubuntu on VirtualBox you need to:
+- Download the last LTS version of Ubuntu by the following link: [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop)
+> Now you can continue with the other steps during the download
+- Open VirtualBox
+- Press "New"
+- Compile the form
+    - As name put "rest-createstructure"
+    - As Type: "Linux"
+    - As version: "Ubuntu (64-bit)" or "Ubuntu (32-bit)"
+    - Press "Next >"
+- Set the RAM to use for the VirtualMachine, at most half of local RAM and press "Next >"
+- Leave "Create a virtual hard disk now" and press "Create"
+- Leave "VDI ..." and press "Next >"
+- Leave "Dynamically allocated" and press "Next >"
+- Change the hard disk memory, we suggest 16GB and press "Create"
+> Make sure that Ubuntu download is finished before to continue
+- On the VirtualBox console, selecting the created VM, press "Start"
+- Select as start-up disk Ubuntu, already downloaded
+    - Press the folder icon
+    - Press "Add", in the top menu
+    - Select the Ubuntu iso, the file will have a structure like "ubuntu-version-other_info.iso"
+    - Press "Choose" and "Start"
+- Follow the install steps (the installation needs some minutes)
+
+### 3. Install dependencies
+Now you have to install lamp (Linux Apache MySQL (DB) PHP) on the VM.
+> We suggest you to open this guide on the virtual machine, so you can copy and paste easlier the following commands. 
+
+To install Dependes on the Virtual Machine you need to:
+- On the VM (Virtual Machine) open the terminal (`Ctrl + Alt + T`)
+- On the terminal paste `sudo apt install apache2 curl mysql-server php libapache2-mod-php php-mysql git -y; sudo systemctl restart apache2` and press enter (you have to insert your password)
+- On the terminal paste `sudo apt install phpmyadmin -y; sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf; sudo a2enconf phpmyadmin.conf; sudo systemctl reload apache2.service`
+    - leave "apache2" in the selecting menu
+    - when required select "\<Yes\>"
+    - set a password for phpmyadmin, after that select "\<Ok\>"
+- Check the installation opening Firefox (the first item in the left menu bar) and as link put `localhost`
+- If it works check also `localhost/phpmyadmin/` as link, better if in a new tab
+    - To do the login here put "phpmyadmin" ad username and the password you setted a while go
+### 4. Add PHP source code
+To add the PHP source code on VirtualBox you need to:
+- Go back to the terminal and type `cd /var/www/html; sudo git clone https://github.com/createstructure/rest-createstructure.git; cd rest-createstructure/bin/config/; sed -i 's/<YOUR_DB_NAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_USERNAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_PASSWORD>/localhost/g' database.php; sed -i 's/<YOUR_DB_TABLE_NAME>/createstructure/g' database.php; sed -i 's/ \/\/ TODO//g' database.php`
+- Generate GPG key: `gpg --gen-key` and insert your data (DO NOT PUT ANY PASSWORD)
+- On the terminal type `echo  --armor --export <YOUR_EMAIL>) | sed -e 's/ /\n/g' -e 's/\nPGP\nPUBLIC\nKEY\nBLOCK/ PGP PUBLIC KEY BLOCK/g'` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)
+- Type `sudo nano key.php` and replace <PUBLIC_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)
+- On the terminal type `echo  --armor --export-secret-keys <YOUR_EMAIL>) | sed -e 's/ /\n/g' -e 's/\nPGP\nPRIVATE\nKEY\nBLOCK/ PGP PRIVATE KEY BLOCK/g'` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)
+- Type `sudo nano key.php` and replace <PRIVATE_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)
+
+### 5. Add DB basic structure
+Now you will create a DB and the basic structure.
+
+To do that you need to:
+- Go back to the phpmyadmin page
+- On the hight menu select "SQL"
+- Copy [this](https://raw.githubusercontent.com/createstructure/rest-createstructure/v10-beta/db/database.sql) and paste it in the box
+- Press "Go"
+
+### 6. Use REST API
+
+To use the REST API you need to:
+- On the terminal write: `curl -d '{<INSERT_YOUR_REQUEST>}' -H "Content-Type: application/json" -X POST http://localhost/rest-createstructure/bin/ | json_pp -json_opt pretty,canonical`, replacing <INSERT_YOUR_REQUEST> with your request, see requests rupported [here](https://github.com/createstructure/rest-createstructure/wiki/REST-Actions)
+
+### 7. Do the changes/ debug you want 
+Now you can try any changes you want and, if you want, improve the REST API (using [Issues](https://github.com/createstructure/rest-createstructure/issues), [Pull requests](https://github.com/createstructure/rest-createstructure/pulls), or if you want to suggest/ discuss on how to improve [Discussion](https://github.com/createstructure/rest-createstructure/discussions))
+
 ---
 Made w/ :heart: by Castellani Davide
 
