@@ -141,6 +141,7 @@ jobs:
         echo "--" >> database.sql
         echo "" >> database.sql
         echo "CREATE DATABASE createstructure;" >> database.sql
+        echo "USE createstructure;" >> database.sql
         echo "" >> database.sql
         cat tables/*.sql >> database.sql
         cat functions-procedures/*.sql >> database.sql
