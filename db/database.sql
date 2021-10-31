@@ -33,7 +33,7 @@ CREATE TABLE `client_account` (
 --
 
 CREATE TABLE `client_accounts_type` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
   `active` tinyint(1) NOT NULL COMMENT '"true" if it represents an active account, otherwise "false"',
   `super` tinyint(1) NOT NULL COMMENT '"true" if it represents a super account, otherwise "false"',
   `max_day` int(11) NOT NULL COMMENT 'Maximum repository creation for every day',
