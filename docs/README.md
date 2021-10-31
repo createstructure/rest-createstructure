@@ -116,13 +116,13 @@ Install the REST API locally permits you to do some debug and try new configurat
 > To do these actions you need to run manually the functions, in the previous example `CreateUpdateRemoveClient`
 
 ### Steps:
-1. Install VirtualBox on the PC
-2. Install Ubuntu
-3. Install dependencies
-4. Add PHP source code
-5. Create server
-6. Try REST API
-7. Do the changes/ debug you want 
+1. [Install VirtualBox on the PC](#1-install-virtualbox-on-the-pc)
+2. [Install Ubuntu](#2-install-ubuntu)
+3. [Install dependencies](#3-install-dependencies)
+4. [Add PHP source code](#4-add-php-source-code)
+5. [Create server](#5-create-server)
+6. [Use REST API](#6-use-rest-api)
+7. [Do the changes/ debug you want](#7-do-the-changes-debug-you-want)
 
 ### 1. Install VirtualBox on the PC
 For installation we suggest VirtualBox, a tool that allows you to create one or more virtual machines :computer:.
