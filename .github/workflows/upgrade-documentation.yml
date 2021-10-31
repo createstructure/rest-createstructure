@@ -35,7 +35,7 @@ jobs:
           """
           social_img = get_social_img()
           file_content = "## :octocat: Description :octocat:\n"
-          file_content += get_json()["description"] + "\n"
+          file_content += get_json()["description"].replace(". ", ".\n\n").replace("wiki", "[wiki]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/wiki)") + "\n"
           file_content += f"![$GITHUB_REPOSITORY]({social_img})\n"
           return file_content
         if __name__ == "__main__":
@@ -176,7 +176,7 @@ jobs:
         echo "    - To do the login here put \"phpmyadmin\" ad username and the password you setted a while go" >> Rebuild_the_REST_API_locally.md
         echo "### 4. Add PHP source code" >> Rebuild_the_REST_API_locally.md
         echo "To add the PHP source code on VirtualBox you need to:" >> Rebuild_the_REST_API_locally.md
-        echo "- Go back to the terminal and type \`cd /var/www/html; sudo git clone https://github.com/createstructure/rest-createstructure.git; cd rest-createstructure/bin/config/; sed -i 's/<YOUR_DB_NAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_USERNAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_PASSWORD>/localhost/g' database.php; sed -i 's/<YOUR_DB_TABLE_NAME>/createstructure/g' database.php; sed -i 's/ \\/\\/ TODO//g' database.php\`" >> Rebuild_the_REST_API_locally.md
+        echo "- Go back to the terminal and type \`cd /var/www/html; sudo git clone $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git; cd rest-createstructure/bin/config/; sed -i 's/<YOUR_DB_NAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_USERNAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_PASSWORD>/localhost/g' database.php; sed -i 's/<YOUR_DB_TABLE_NAME>/createstructure/g' database.php; sed -i 's/ \\/\\/ TODO//g' database.php\`" >> Rebuild_the_REST_API_locally.md
         echo "- Generate GPG key: \`gpg --gen-key\` and insert your data (DO NOT PUT ANY PASSWORD)" >> Rebuild_the_REST_API_locally.md
         echo "- On the terminal type \`echo $gpg --armor --export <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPUBLIC\\nKEY\\nBLOCK/ PGP PUBLIC KEY BLOCK/g'\` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild_the_REST_API_locally.md
         echo "- Type \`sudo nano key.php\` and replace <PUBLIC_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild_the_REST_API_locally.md
@@ -189,16 +189,16 @@ jobs:
         echo "To do that you need to:" >> Rebuild_the_REST_API_locally.md
         echo "- Go back to the phpmyadmin page" >> Rebuild_the_REST_API_locally.md
         echo "- On the hight menu select \"SQL\"" >> Rebuild_the_REST_API_locally.md
-        echo "- Copy [this](https://raw.githubusercontent.com/createstructure/rest-createstructure/v10-beta/db/database.sql) and paste it in the box" >> Rebuild_the_REST_API_locally.md
+        echo "- Copy [this](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/v10-beta/db/database.sql) and paste it in the box" >> Rebuild_the_REST_API_locally.md
         echo "- Press \"Go\"" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### 6. Use REST API" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "To use the REST API you need to:" >> Rebuild_the_REST_API_locally.md
-        echo "- On the terminal write: \`curl -d '{<INSERT_YOUR_REQUEST>}' -H \"Content-Type: application/json\" -X POST http://localhost/rest-createstructure/bin/ | json_pp -json_opt pretty,canonical\`, replacing <INSERT_YOUR_REQUEST> with your request, see requests rupported [here](https://github.com/createstructure/rest-createstructure/wiki/REST-Actions)" >> Rebuild_the_REST_API_locally.md
+        echo "- On the terminal write: \`curl -d '{<INSERT_YOUR_REQUEST>}' -H \"Content-Type: application/json\" -X POST http://localhost/rest-createstructure/bin/ | json_pp -json_opt pretty,canonical\`, replacing <INSERT_YOUR_REQUEST> with your request, see requests rupported [here]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/wiki/REST-Actions)" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### 7. Do the changes/ debug you want " >> Rebuild_the_REST_API_locally.md
-        echo "Now you can try any changes you want and, if you want, improve the REST API (using [Issues](https://github.com/createstructure/rest-createstructure/issues), [Pull requests](https://github.com/createstructure/rest-createstructure/pulls), or if you want to suggest/ discuss on how to improve [Discussion](https://github.com/createstructure/rest-createstructure/discussions))" >> Rebuild_the_REST_API_locally.md
+        echo "Now you can try any changes you want and, if you want, improve the REST API (using [Issues]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/issues), [Pull requests]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/pulls), or if you want to suggest/ discuss on how to improve [Discussion]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/discussions))" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
     - name: _Footer file
       run: |
