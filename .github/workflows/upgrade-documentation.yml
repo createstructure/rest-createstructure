@@ -102,14 +102,14 @@ jobs:
     - name: Rebuild the REST API locally file
       run: |
         cd wiki
-        echo "## :octocat: Rebuild the REST API locally :octocat:" > Rebuild_the_REST_API_locally.md
+        echo "## :octocat: Rebuild the REST API locally :octocat:" >> Rebuild_the_REST_API_locally.md
         echo "Install the REST API locally permits you to do some debug and try new configurations." >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "> ATTENTION" >> Rebuild_the_REST_API_locally.md
         echo ">" >> Rebuild_the_REST_API_locally.md
         echo "> Some features, like subscription with GitHub marketplace, can't be done with the local configuration." >> Rebuild_the_REST_API_locally.md
         echo ">" >> Rebuild_the_REST_API_locally.md
-        echo "> To do these actions you need to run manually the functions, in the previous example `CreateUpdateRemoveClient`" >> Rebuild_the_REST_API_locally.md
+        echo "> To do these actions you need to run manually the functions, in the previous example \`CreateUpdateRemoveClient\`" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### Steps:" >> Rebuild_the_REST_API_locally.md
         echo "1. Install VirtualBox on the PC" >> Rebuild_the_REST_API_locally.md
@@ -165,23 +165,23 @@ jobs:
         echo "> We suggest you to open this guide on the virtual machine, so you can copy and paste easlier the following commands. " >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "To install Dependes on the Virtual Machine you need to:" >> Rebuild_the_REST_API_locally.md
-        echo "- On the VM (Virtual Machine) open the terminal (`Ctrl + Alt + T`)" >> Rebuild_the_REST_API_locally.md
-        echo "- On the terminal paste `sudo apt install apache2 curl mysql-server php libapache2-mod-php php-mysql git -y; sudo systemctl restart apache2` and press enter (you have to insert your password)" >> Rebuild_the_REST_API_locally.md
-        echo "- On the terminal paste `sudo apt install phpmyadmin -y; sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf; sudo a2enconf phpmyadmin.conf; sudo systemctl reload apache2.service`" >> Rebuild_the_REST_API_locally.md
+        echo "- On the VM (Virtual Machine) open the terminal (\`Ctrl + Alt + T\`)" >> Rebuild_the_REST_API_locally.md
+        echo "- On the terminal paste \`sudo apt install apache2 curl mysql-server php libapache2-mod-php php-mysql git -y; sudo systemctl restart apache2\` and press enter (you have to insert your password)" >> Rebuild_the_REST_API_locally.md
+        echo "- On the terminal paste \`sudo apt install phpmyadmin -y; sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf; sudo a2enconf phpmyadmin.conf; sudo systemctl reload apache2.service\`" >> Rebuild_the_REST_API_locally.md
         echo "    - leave \"apache2\" in the selecting menu" >> Rebuild_the_REST_API_locally.md
         echo "    - when required select \"\\<Yes\\>\"" >> Rebuild_the_REST_API_locally.md
         echo "    - set a password for phpmyadmin, after that select \"\\<Ok\\>\"" >> Rebuild_the_REST_API_locally.md
-        echo "- Check the installation opening Firefox (the first item in the left menu bar) and as link put `localhost`" >> Rebuild_the_REST_API_locally.md
-        echo "- If it works check also `localhost/phpmyadmin/` as link, better if in a new tab" >> Rebuild_the_REST_API_locally.md
+        echo "- Check the installation opening Firefox (the first item in the left menu bar) and as link put \`localhost\`" >> Rebuild_the_REST_API_locally.md
+        echo "- If it works check also \`localhost/phpmyadmin/\` as link, better if in a new tab" >> Rebuild_the_REST_API_locally.md
         echo "    - To do the login here put \"phpmyadmin\" ad username and the password you setted a while go" >> Rebuild_the_REST_API_locally.md
         echo "### 4. Add PHP source code" >> Rebuild_the_REST_API_locally.md
         echo "To add the PHP source code on VirtualBox you need to:" >> Rebuild_the_REST_API_locally.md
-        echo "- Go back to the terminal and type `cd /var/www/html; sudo git clone https://github.com/createstructure/rest-createstructure.git; cd rest-createstructure/bin/config/; sed -i 's/<YOUR_DB_NAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_USERNAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_PASSWORD>/localhost/g' database.php; sed -i 's/<YOUR_DB_TABLE_NAME>/createstructure/g' database.php; sed -i 's/ \\/\\/ TODO//g' database.php`" >> Rebuild_the_REST_API_locally.md
-        echo "- Generate GPG key: `gpg --gen-key` and insert your data (DO NOT PUT ANY PASSWORD)" >> Rebuild_the_REST_API_locally.md
-        echo "- On the terminal type `echo $gpg --armor --export <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPUBLIC\\nKEY\\nBLOCK/ PGP PUBLIC KEY BLOCK/g'` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild_the_REST_API_locally.md
-        echo "- Type `sudo nano key.php` and replace <PUBLIC_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild_the_REST_API_locally.md
-        echo "- On the terminal type `echo $gpg --armor --export-secret-keys <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPRIVATE\\nKEY\\nBLOCK/ PGP PRIVATE KEY BLOCK/g'` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild_the_REST_API_locally.md
-        echo "- Type `sudo nano key.php` and replace <PRIVATE_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild_the_REST_API_locally.md
+        echo "- Go back to the terminal and type \`cd /var/www/html; sudo git clone https://github.com/createstructure/rest-createstructure.git; cd rest-createstructure/bin/config/; sed -i 's/<YOUR_DB_NAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_USERNAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_PASSWORD>/localhost/g' database.php; sed -i 's/<YOUR_DB_TABLE_NAME>/createstructure/g' database.php; sed -i 's/ \\/\\/ TODO//g' database.php\`" >> Rebuild_the_REST_API_locally.md
+        echo "- Generate GPG key: \`gpg --gen-key\` and insert your data (DO NOT PUT ANY PASSWORD)" >> Rebuild_the_REST_API_locally.md
+        echo "- On the terminal type \`echo $gpg --armor --export <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPUBLIC\\nKEY\\nBLOCK/ PGP PUBLIC KEY BLOCK/g'\` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild_the_REST_API_locally.md
+        echo "- Type \`sudo nano key.php\` and replace <PUBLIC_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild_the_REST_API_locally.md
+        echo "- On the terminal type \`echo $gpg --armor --export-secret-keys <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPRIVATE\\nKEY\\nBLOCK/ PGP PRIVATE KEY BLOCK/g'\` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild_the_REST_API_locally.md
+        echo "- Type \`sudo nano key.php\` and replace <PRIVATE_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### 5. Add DB basic structure" >> Rebuild_the_REST_API_locally.md
         echo "Now you will create a DB and the basic structure." >> Rebuild_the_REST_API_locally.md
@@ -195,7 +195,7 @@ jobs:
         echo "### 6. Use REST API" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "To use the REST API you need to:" >> Rebuild_the_REST_API_locally.md
-        echo "- On the terminal write: `curl -d '{<INSERT_YOUR_REQUEST>}' -H \"Content-Type: application/json\" -X POST http://localhost/rest-createstructure/bin/ | json_pp -json_opt pretty,canonical`, replacing <INSERT_YOUR_REQUEST> with your request, see requests rupported [here](https://github.com/createstructure/rest-createstructure/wiki/REST-Actions)" >> Rebuild_the_REST_API_locally.md
+        echo "- On the terminal write: \`curl -d '{<INSERT_YOUR_REQUEST>}' -H \"Content-Type: application/json\" -X POST http://localhost/rest-createstructure/bin/ | json_pp -json_opt pretty,canonical\`, replacing <INSERT_YOUR_REQUEST> with your request, see requests rupported [here](https://github.com/createstructure/rest-createstructure/wiki/REST-Actions)" >> Rebuild_the_REST_API_locally.md
         echo "" >> Rebuild_the_REST_API_locally.md
         echo "### 7. Do the changes/ debug you want " >> Rebuild_the_REST_API_locally.md
         echo "Now you can try any changes you want and, if you want, improve the REST API (using [Issues](https://github.com/createstructure/rest-createstructure/issues), [Pull requests](https://github.com/createstructure/rest-createstructure/pulls), or if you want to suggest/ discuss on how to improve [Discussion](https://github.com/createstructure/rest-createstructure/discussions))" >> Rebuild_the_REST_API_locally.md
@@ -226,6 +226,7 @@ jobs:
         cat wiki/Database-Structure.md >> repo/docs/README.md
         cat wiki/REST-Actions.md >> repo/docs/README.md
         cat wiki/CHANGELOG.md >> repo/docs/README.md
+        cat wiki/Rebuild_the_REST_API_locally.md >> repo/docs/README.md
         cat wiki/_Footer.md >> repo/docs/README.md
     - name: Recreate database.sql
       run: |
