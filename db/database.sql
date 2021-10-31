@@ -20,7 +20,7 @@ CREATE TABLE `client` (
 --
 
 CREATE TABLE `client_account` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `client_ID` varchar(39) NOT NULL COMMENT 'Client ID',
   `account_ID` int(11) NOT NULL COMMENT 'Account ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
@@ -33,7 +33,7 @@ CREATE TABLE `client_account` (
 --
 
 CREATE TABLE `client_accounts_type` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `active` tinyint(1) NOT NULL COMMENT '"true" if it represents an active account, otherwise "false"',
   `super` tinyint(1) NOT NULL COMMENT '"true" if it represents a super account, otherwise "false"',
   `max_day` int(11) NOT NULL COMMENT 'Maximum repository creation for every day',
@@ -57,7 +57,7 @@ INSERT INTO `client_accounts_type` (`ID`, `active`, `super`, `max_day`, `max_h`,
 --
 
 CREATE TABLE `repo_declaration` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `client_ID` varchar(39) NOT NULL COMMENT 'Client ID',
   `data` text NOT NULL COMMENT 'All information for the creation of the repository',
   `description` text DEFAULT NULL COMMENT 'An optional description',
@@ -70,7 +70,7 @@ CREATE TABLE `repo_declaration` (
 --
 
 CREATE TABLE `repo_log` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `repo_ID` int(11) NOT NULL COMMENT 'Repository ID',
   `server_ID` int(11) DEFAULT NULL COMMENT 'ID of the server taking charge of the operation',
   `status_ID` int(11) NOT NULL COMMENT 'Status ID',
@@ -84,7 +84,7 @@ CREATE TABLE `repo_log` (
 --
 
 CREATE TABLE `repo_status` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`)
@@ -103,7 +103,7 @@ INSERT INTO `repo_status` (`description`) VALUES
 --
 
 CREATE TABLE `server_list` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `name` text NOT NULL COMMENT 'Server name',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
@@ -114,7 +114,7 @@ CREATE TABLE `server_list` (
 --
 
 CREATE TABLE `server_priority_declaration` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `server_ID` int(11) NOT NULL COMMENT 'Server ID',
   `client_ID` varchar(39) NOT NULL COMMENT 'ID of who made the request',
   `instruction_ID` int(11) NOT NULL COMMENT 'Instruction ID',
@@ -128,7 +128,7 @@ CREATE TABLE `server_priority_declaration` (
 --
 
 CREATE TABLE `server_priority_instructions` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `name` text NOT NULL COMMENT 'Name of the instuction',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
@@ -149,7 +149,7 @@ INSERT INTO `server_priority_instructions` (`name`, `description`) VALUES
 --
 
 CREATE TABLE `server_priority_log` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `priority_ID` int(11) NOT NULL COMMENT 'Priority ID',
   `status_ID` int(11) NOT NULL COMMENT 'Status ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
@@ -162,7 +162,7 @@ CREATE TABLE `server_priority_log` (
 --
 
 CREATE TABLE `server_priority_status` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`)
@@ -180,7 +180,7 @@ INSERT INTO `server_priority_status` (`description`) VALUES
 --
 
 CREATE TABLE `server_secrets` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `server_ID` int(11) NOT NULL COMMENT 'Server ID',
   `server_password` text NOT NULL COMMENT 'Server password',
   `server_public_key` text NOT NULL COMMENT 'Server public key',
