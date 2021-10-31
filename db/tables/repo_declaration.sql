@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `repo_declaration` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `client_ID` varchar(39) NOT NULL COMMENT 'Client ID',
   `data` text NOT NULL COMMENT 'All information for the creation of the repository',
   `description` text DEFAULT NULL COMMENT 'An optional description',

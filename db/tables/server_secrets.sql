@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `server_secrets` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `server_ID` int(11) NOT NULL COMMENT 'Server ID',
   `server_password` text NOT NULL COMMENT 'Server password',
   `server_public_key` text NOT NULL COMMENT 'Server public key',
