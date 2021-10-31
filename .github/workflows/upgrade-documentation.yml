@@ -136,7 +136,12 @@ jobs:
       run: |
         cd repo/db
         rm -f database.sql
-        echo "CREATE DATABASE createstructure;" > database.sql
+        echo "--" > database.sql
+        echo "-- Create DB" >> database.sql
+        echo "--" >> database.sql
+        echo "" >> database.sql
+        echo "CREATE DATABASE createstructure;" >> database.sql
+        echo "" >> database.sql
         cat tables/*.sql >> database.sql
         cat functions-procedures/*.sql >> database.sql
     - name: git add & commit & upload wiki
