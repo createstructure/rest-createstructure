@@ -34,7 +34,7 @@
 			$this->payload = $payload;
 			$this->server_name = $payload["server_name"];
 			$this->server_password = $payload["server_password"];
-			$this->repo_ID = $payload["repo_ID"];
+			$this->repo_ID = $payload["repo_id"];
 		}
 		
 		/**
