@@ -87,7 +87,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_get_job_info\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repo_id\": <repo_ID>}",
 						"URL" => "/",
-						"response" => "{\"code\": <code_code>, \"message\": <response_message>, \"payload\": <payload>}",
+						"response" => "{\"code\": <code_code>, \"message\": <response_message>, \"repo_info\": <repo_info>}",
 						"notes" => "Usefull for the server to ask a repo info to create it"
 					),
 					"server_set_job_done" => array(
