@@ -53,9 +53,7 @@
 			
 			// Decrypt and encrypt again for the server
 			$decrypted = $this->decrypt($this->response, true);
-			$encrypted = array();
-			for ($i = 0; $i < 16; $i++)
-				$encrypted[] = $this->encrypt($decrypted);
+			$encrypted = $this->encrypt($decrypted);
 
 			switch ($this->response) {
 				case -1:
