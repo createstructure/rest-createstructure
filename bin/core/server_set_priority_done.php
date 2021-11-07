@@ -20,7 +20,7 @@
 		private $conn;
 		private $server_name;
 		private $server_password;
-		private $priority_ID;
+		private $priorityID;
 		private $response;
 		
 		/**
@@ -32,7 +32,7 @@
 			$this->payload = $payload;
 			$this->server_name = $payload["server_name"];
 			$this->server_password = $payload["server_password"];
-			$this->priority_ID = $payload["priority_ID"];
+			$this->priorityID = $payload["priorityID"];
 		}
 		
 		/**
@@ -77,7 +77,7 @@
 			// prepare and execute query
 			$stmt = $this->conn->get_connection()->stmt_init();
 			$stmt->prepare($query);
-			$stmt->bind_param("sss", $this->server_name, $this->server_password, $this->priority_ID);
+			$stmt->bind_param("sss", $this->server_name, $this->server_password, $this->priorityID);
 			$stmt->execute();
 			$result = $stmt->get_result();			
 			$stmt->close();

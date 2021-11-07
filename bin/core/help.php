@@ -78,14 +78,14 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_reserve_job\", \"server_name\": <server_name>, \"server_password\": <server_password>}",
 						"URL" => "/",
-						"response" => "{\"code\": <code_code>, \"message\": <response_message>, \"repo_id\": <repo_id>}",
+						"response" => "{\"code\": <code_code>, \"message\": <response_message>, \"repoID\": <repoID>}",
 						"notes" => "Usefull for the server to reserve a repo to create it"
 					),
 					"server_get_job_info" => array(
 						"name" => "Get a new repo info to create it (server-side)",
 						"type" => "POST",
 						"action" => "functionality",
-						"request" => "{\"request\": \"server_get_job_info\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repo_id\": <repo_ID>}",
+						"request" => "{\"request\": \"server_get_job_info\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repoID\": <repoID>}",
 						"URL" => "/",
 						"response" => "{\"code\": <code_code>, \"message\": <response_message>, \"repo_info\": <repo_info>}",
 						"notes" => "Usefull for the server to ask a repo info to create it"
@@ -94,7 +94,7 @@
 						"name" => "Set a repo job as done (server-side)",
 						"type" => "POST",
 						"action" => "functionality",
-						"request" => "{\"request\": \"server_set_job_done\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repo_id\": <repo_ID>}",
+						"request" => "{\"request\": \"server_set_job_done\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repoID\": <repoID>}",
 						"URL" => "/",
 						"response" => "{\"code\": <code_code>, \"message\": <response_message>}",
 						"notes" => "Usefull for the server to set repo job as done"
@@ -114,14 +114,14 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_get_priority\", \"server_name\": <server_name>, \"server_password\": <server_password>}",
 						"URL" => "/",
-						"response" => "{\"code\": <code_code>, \"message\": <response_message> [, \"priority_instruction\": <priority_instruction>, \"priority_ID\": <priority_ID>]}",
+						"response" => "{\"code\": <code_code>, \"message\": <response_message> [, \"priority_instruction\": <priority_instruction>, \"priorityID\": <priorityID>]}",
 						"notes" => "Usefull for the server to get the priority"
 					),
 					"server_set_priority_done" => array(
 						"name" => "Set a repo job as done (server-side)",
 						"type" => "POST",
 						"action" => "functionality",
-						"request" => "{\"request\": \"server_set_priority_done\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"priority_ID\": <priority_ID>}",
+						"request" => "{\"request\": \"server_set_priority_done\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"priorityID\": <priorityID>}",
 						"URL" => "/",
 						"response" => "{\"code\": <code_code>, \"message\": <response_message>}",
 						"notes" => "Usefull to set priority as done"

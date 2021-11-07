@@ -66,7 +66,7 @@
 						"code" => 200,
 						"message" => "Priority",
 						"priority_instruction" => $priority["priority_instruction"],
-						"priority_ID" => $priority["priority_ID"]
+						"priorityID" => $priority["priorityID"]
 					);
 			}
 		}
