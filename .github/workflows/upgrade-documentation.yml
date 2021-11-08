@@ -11,8 +11,8 @@ jobs:
       run: |
         sudo apt update -y
         sudo pip install BeautifulSoup4
-        git clone --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
-        git clone --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -b $(echo ${GITHUB_REF#refs/heads/}) repo
+        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
+        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -b $(echo ${GITHUB_REF#refs/heads/}) repo
         rm -f wiki/*.md
     - name: Home file
       run: |
