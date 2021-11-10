@@ -20,13 +20,13 @@ CREATE TABLE `client` (
 --
 
 CREATE TABLE `client_account` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
-  `client_ID` varchar(39) NOT NULL COMMENT 'Client ID',
-  `account_ID` int(11) NOT NULL COMMENT 'Account ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `clientID` varchar(39) NOT NULL COMMENT 'Client ID',
+  `accountID` int(11) NOT NULL COMMENT 'Account ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`),
-  KEY (`client_ID`, `account_ID`)
+  KEY (`clientID`, `accountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table for connecting users to various accounts';
 --
 -- Table structure for table `client_accounts_type`
@@ -57,27 +57,27 @@ INSERT INTO `client_accounts_type` (`ID`, `active`, `super`, `max_day`, `max_h`,
 --
 
 CREATE TABLE `repo_declaration` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
-  `client_ID` varchar(39) NOT NULL COMMENT 'Client ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `clientID` varchar(39) NOT NULL COMMENT 'Client ID',
   `data` text NOT NULL COMMENT 'All information for the creation of the repository',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`),
-  KEY (`client_ID`)
+  KEY (`clientID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='The declaration of the repo to create';
 --
 -- Table structure for table `repo_log`
 --
 
 CREATE TABLE `repo_log` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
-  `repo_ID` int(11) NOT NULL COMMENT 'Repository ID',
-  `server_ID` int(11) DEFAULT NULL COMMENT 'ID of the server taking charge of the operation',
-  `status_ID` int(11) NOT NULL COMMENT 'Status ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `repoID` int(11) NOT NULL COMMENT 'Repository ID',
+  `serverID` int(11) DEFAULT NULL COMMENT 'ID of the server taking charge of the operation',
+  `statusID` int(11) NOT NULL COMMENT 'Status ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`),
-  KEY (`repo_ID`,`server_ID`,`status_ID`)
+  KEY (`repoID`,`serverID`,`statusID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table to track the progress of repo creation';
 --
 -- Table structure for table `repo_status`
@@ -114,14 +114,14 @@ CREATE TABLE `server_list` (
 --
 
 CREATE TABLE `server_priority_declaration` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
-  `server_ID` int(11) NOT NULL COMMENT 'Server ID',
-  `client_ID` varchar(39) NOT NULL COMMENT 'ID of who made the request',
-  `instruction_ID` int(11) NOT NULL COMMENT 'Instruction ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `serverID` int(11) NOT NULL COMMENT 'Server ID',
+  `clientID` varchar(39) NOT NULL COMMENT 'ID of who made the request',
+  `instructionID` int(11) NOT NULL COMMENT 'Instruction ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`),
-  KEY (`server_ID`, `client_ID`, `instruction_ID`)
+  KEY (`serverID`, `clientID`, `instructionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='The declaration of the server instructions to do';
 --
 -- Table structure for table `server_priority_instructions`
@@ -149,13 +149,13 @@ INSERT INTO `server_priority_instructions` (`name`, `description`) VALUES
 --
 
 CREATE TABLE `server_priority_log` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
-  `priority_ID` int(11) NOT NULL COMMENT 'Priority ID',
-  `status_ID` int(11) NOT NULL COMMENT 'Status ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `priorityID` int(11) NOT NULL COMMENT 'Priority ID',
+  `statusID` int(11) NOT NULL COMMENT 'Status ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`),
-  KEY (`priority_ID`,`status_ID`)
+  KEY (`priorityID`,`statusID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='The log of server instructions';
 --
 -- Table structure for table `server_priority_status`
@@ -180,23 +180,23 @@ INSERT INTO `server_priority_status` (`description`) VALUES
 --
 
 CREATE TABLE `server_secrets` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
-  `server_ID` int(11) NOT NULL COMMENT 'Server ID',
+  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `serverID` int(11) NOT NULL COMMENT 'Server ID',
   `server_password` text NOT NULL COMMENT 'Server password',
   `server_public_key` text NOT NULL COMMENT 'Server public key',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
   PRIMARY KEY (`ID`),
-  KEY (`server_ID`)
+  KEY (`serverID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='The secrets of the servers';
 --
 -- Connected to 
 --
 
 DELIMITER $$
-CREATE FUNCTION `CreateRepo`(`client_ID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
+CREATE FUNCTION `CreateRepo`(`clientID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
 BEGIN
-	DECLARE consumer TEXT DEFAULT GetClient(client_ID); 
+	DECLARE consumer TEXT DEFAULT GetClient(clientID); 
 	IF
 	(
 		SELECT json_extract(
@@ -219,12 +219,12 @@ BEGIN
 		)
 	) > 0
 	THEN
-		INSERT INTO `repo_declaration`(`client_ID`, `data`)			
-		VALUES (client_ID, payload);
+		INSERT INTO `repo_declaration`(`clientID`, `data`)			
+		VALUES (clientID, payload);
 		
-		INSERT INTO `repo_log`(`repo_ID`, `status_ID`)
+		INSERT INTO `repo_log`(`repoID`, `statusID`)
 		VALUES (
-					LAST_INSERT_ID(), 
+					LAST_INSERTID(), 
 					(
 						SELECT repo_status.ID
 						FROM `repo_status` AS repo_status
@@ -247,9 +247,9 @@ BEGIN
 	INSERT INTO `server_list`(`name`, `description`)
 	VALUES (name, description);
 	
-	INSERT INTO `server_secrets`(`server_ID`, `server_password`, `server_public_key`)
+	INSERT INTO `server_secrets`(`serverID`, `server_password`, `server_public_key`)
 	VALUES (
-				LAST_INSERT_ID(), 
+				LAST_INSERTID(), 
 				server_password,
 				server_public_key
 		);
@@ -259,22 +259,22 @@ DELIMITER ;--
 --
 
 DELIMITER $$
-CREATE PROCEDURE `CreateServerPriority`(IN `client_ID` VARCHAR(39), IN `instruction` TEXT, IN `server_ID` INT)
+CREATE PROCEDURE `CreateServerPriority`(IN `clientID` VARCHAR(39), IN `instruction` TEXT, IN `serverID` INT)
 BEGIN
-	INSERT INTO `server_priority_declaration`(`client_ID`, `instruction_ID`, `server_ID`)
+	INSERT INTO `server_priority_declaration`(`clientID`, `instructionID`, `serverID`)
 	VALUES (
-		client_ID, 
+		clientID, 
 		(
 			SELECT server_priority_instructions.ID
 			FROM `server_priority_instructions` AS server_priority_instructions
 			WHERE server_priority_instructions.name = instruction
 		),
-		server_ID
+		serverID
 	);
 	
-	INSERT INTO `server_priority_log`(`priority_ID`, `status_ID`)
+	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
 	VALUES (
-		LAST_INSERT_ID(), 
+		LAST_INSERTID(), 
 		(
 			SELECT server_priority_status.ID
 			FROM `server_priority_status` AS server_priority_status
@@ -293,7 +293,7 @@ BEGIN
 	INSERT IGNORE INTO `Sql1437734_5`.`client`(`github_username`)
 	VALUES (github_username);
 	
-	INSERT INTO `Sql1437734_5`.`client_account`(`client_ID`, `account_ID`)
+	INSERT INTO `Sql1437734_5`.`client_account`(`clientID`, `accountID`)
 	VALUES (github_username, accountID);
 	
 	RETURN 200;
@@ -319,21 +319,21 @@ BEGIN
 			SELECT COUNT(repo_declaration.ID)
 			FROM `Sql1437734_5`.`repo_declaration` AS repo_declaration
 			WHERE
-				repo_declaration.client_ID = github_username AND
+				repo_declaration.clientID = github_username AND
 				repo_declaration.timestamp >= (date_sub(now(), interval 1 day))
 			),
 		'remaining_h', client_accounts_type.max_h  - (
 			SELECT COUNT(repo_declaration.ID)
 			FROM `Sql1437734_5`.`repo_declaration` AS repo_declaration
 			WHERE
-				repo_declaration.client_ID = github_username AND
+				repo_declaration.clientID = github_username AND
 				repo_declaration.timestamp >= (date_sub(now(), interval 1 hour))
 			),
 		'remaining_m', client_accounts_type.max_m  - (
 			SELECT COUNT(repo_declaration.ID)
 			FROM `Sql1437734_5`.`repo_declaration` AS repo_declaration
 			WHERE
-				repo_declaration.client_ID = github_username AND
+				repo_declaration.clientID = github_username AND
 				repo_declaration.timestamp >= (date_sub(now(), interval 1 minute))
 			),
 		'account_description', client_accounts_type.description,
@@ -345,10 +345,10 @@ BEGIN
 			(
 				`Sql1437734_5`.`client` AS client
 				INNER JOIN `Sql1437734_5`.`client_account` AS client_account 
-				ON client.github_username = client_account.client_ID
+				ON client.github_username = client_account.clientID
 			)
 			INNER JOIN `Sql1437734_5`.`client_accounts_type` AS client_accounts_type 
-			ON client_account.account_ID = client_accounts_type.ID
+			ON client_account.accountID = client_accounts_type.ID
 		)
 	WHERE client.github_username = github_username
 	ORDER BY client_account.timestamp DESC
@@ -361,7 +361,7 @@ DELIMITER ;--
 --
 
 DELIMITER $$
-CREATE FUNCTION `ServerGetJobInfo`(`server_name` TEXT, `server_password` TEXT, `repo_ID` INT) RETURNS text CHARSET latin1
+CREATE FUNCTION `ServerGetJobInfo`(`server_name` TEXT, `server_password` TEXT, `repoID` INT) RETURNS text CHARSET latin1
 BEGIN
 	IF (
 		(
@@ -369,7 +369,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -382,7 +382,7 @@ BEGIN
 	SELECT repo_declaration2.data
 	INTO @repo_info 
 	FROM `repo_declaration` AS repo_declaration2 
-	WHERE repo_declaration2.ID = repo_ID
+	WHERE repo_declaration2.ID = repoID
 	LIMIT 1;
 
 	RETURN @repo_info;
@@ -403,7 +403,7 @@ BEGIN
 				(
 					`server_list` AS server_list 
 					INNER JOIN `server_secrets` AS server_secrets
-					ON server_secrets.server_ID = server_list.ID
+					ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -419,17 +419,17 @@ BEGIN
 		SELECT COUNT(*) 
 		FROM `server_priority_declaration` AS server_priority_declaration1
 		WHERE 
-			server_priority_declaration1.server_ID = (
+			server_priority_declaration1.serverID = (
 				SELECT server_list1a.ID 
 				FROM `server_list` AS server_list1a
 				WHERE server_list1a.name = server_name
 				LIMIT 1
 			) 
 			AND (
-				SELECT MAX(server_priority_log1b.status_ID)
+				SELECT MAX(server_priority_log1b.statusID)
 				FROM `server_priority_log` AS server_priority_log1b
-				WHERE server_priority_log1b.priority_ID = server_priority_declaration1.ID
-				GROUP BY server_priority_log1b.priority_ID
+				WHERE server_priority_log1b.priorityID = server_priority_declaration1.ID
+				GROUP BY server_priority_log1b.priorityID
 				LIMIT 1
 			) = (
 				SELECT server_priority_status1c.ID
@@ -443,26 +443,26 @@ BEGIN
 
 	SELECT JSON_OBJECT(
 		'priority_instruction', server_priority_instructions2.name,
-		'priority_ID', server_priority_declaration2.ID
+		'priorityID', server_priority_declaration2.ID
 	)
 	INTO @priority
 	FROM (
 		`server_priority_declaration` AS server_priority_declaration2
 		INNER JOIN `server_priority_instructions` AS server_priority_instructions2
-		ON server_priority_declaration2.instruction_ID = server_priority_instructions2.ID
+		ON server_priority_declaration2.instructionID = server_priority_instructions2.ID
 	)
 	WHERE 
-		server_priority_declaration2.server_ID = (
+		server_priority_declaration2.serverID = (
 			SELECT server_list2a.ID 
 			FROM `server_list` AS server_list2a
 			WHERE server_list2a.name = server_name
 			LIMIT 1
 		) 
 		AND (
-			SELECT MAX(server_priority_log2b.status_ID)
+			SELECT MAX(server_priority_log2b.statusID)
 			FROM `server_priority_log` AS server_priority_log2b
-			WHERE server_priority_log2b.priority_ID = server_priority_declaration2.ID
-			GROUP BY server_priority_log2b.priority_ID
+			WHERE server_priority_log2b.priorityID = server_priority_declaration2.ID
+			GROUP BY server_priority_log2b.priorityID
 			LIMIT 1
 		) = (
 			SELECT server_priority_status2c.ID
@@ -488,7 +488,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -503,7 +503,7 @@ BEGIN
 	FROM 
 		(
 			`server_list` AS server_list2
-			INNER JOIN `server_secrets` AS server_secrets2 ON server_secrets2.server_ID = server_list2.ID
+			INNER JOIN `server_secrets` AS server_secrets2 ON server_secrets2.serverID = server_list2.ID
 		) 
 	WHERE 
 		server_list2.name = server_name 
@@ -527,7 +527,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -543,14 +543,14 @@ BEGIN
 	FROM 
 		(
 			SELECT 
-				repo_log1.repo_ID 
+				repo_log1.repoID 
 			FROM 
 				(
 					`repo_log` AS repo_log1 
-					INNER JOIN `repo_status` AS repo_status1 ON repo_log1.status_ID = repo_status1.ID
+					INNER JOIN `repo_status` AS repo_status1 ON repo_log1.statusID = repo_status1.ID
 				) 
 			GROUP BY 
-				repo_log1.repo_ID 
+				repo_log1.repoID 
 			HAVING 
 				(
 					SELECT 
@@ -558,7 +558,7 @@ BEGIN
 					FROM 
 						`repo_status` AS repo_status1b 
 					WHERE 
-						repo_status1b.ID = MAX(repo_log1.status_ID)
+						repo_status1b.ID = MAX(repo_log1.statusID)
 				) = "To do"
 		) AS tmp;
 
@@ -567,14 +567,14 @@ BEGIN
 	RETURN -2;
 	END IF;
 
-	SELECT repo_log2.repo_ID
-	INTO @repo_ID 
+	SELECT repo_log2.repoID
+	INTO @repoID 
 	FROM 
 		(
 			`repo_log` AS repo_log2 
-			INNER JOIN `repo_status` AS repo_status2 ON repo_log2.status_ID = repo_status2.ID
+			INNER JOIN `repo_status` AS repo_status2 ON repo_log2.statusID = repo_status2.ID
 		) 
-	GROUP BY repo_log2.repo_ID 
+	GROUP BY repo_log2.repoID 
 	HAVING 
 		(
 			SELECT 
@@ -582,14 +582,14 @@ BEGIN
 			FROM 
 				`repo_status` AS repo_status2b 
 			WHERE 
-				repo_status2b.ID = MAX(repo_log2.status_ID)
+				repo_status2b.ID = MAX(repo_log2.statusID)
 		) = "To do" 
 	LIMIT 1;
 
-	INSERT INTO `repo_log` (`repo_ID`, `server_ID`, `status_ID`) 
+	INSERT INTO `repo_log` (`repoID`, `serverID`, `statusID`) 
 	VALUES 
 		(
-			@repo_ID, 
+			@repoID, 
 			(
 				SELECT server_list3.ID 
 				FROM `server_list` AS server_list3 
@@ -603,14 +603,14 @@ BEGIN
 			)
 		);
 		
-	RETURN @repo_ID;
+	RETURN @repoID;
 END$$
 DELIMITER ;--
 -- Connected with server_set_job_done.php
 --
 
 DELIMITER $$
-CREATE FUNCTION `ServerSetJobDone`(`server_name` TEXT, `server_password` TEXT, `repo_ID` INT) RETURNS int(11)
+CREATE FUNCTION `ServerSetJobDone`(`server_name` TEXT, `server_password` TEXT, `repoID` INT) RETURNS int(11)
 BEGIN
 	IF 
 	(
@@ -619,7 +619,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE server_list.name = server_name 
 				AND server_secrets.server_password = server_password 
@@ -633,8 +633,8 @@ BEGIN
 		(
 			SELECT COUNT(*) 
 			FROM `repo_log` AS repo_log1
-			WHERE repo_log1.repo_ID = repo_ID 
-				AND repo_log1.status_ID = (
+			WHERE repo_log1.repoID = repoID 
+				AND repo_log1.statusID = (
 						SELECT repo_status1.ID 
 						FROM `repo_status` AS repo_status1
 						WHERE repo_status1.description = "Done" 
@@ -646,11 +646,11 @@ BEGIN
 	END IF;
 
 	INSERT
-	INTO `repo_log` (`repo_ID`, `server_ID`, `status_ID`)
+	INTO `repo_log` (`repoID`, `serverID`, `statusID`)
 	VALUES
 	(
-		repo_ID,
-		server_ID,
+		repoID,
+		serverID,
 		(
 			SELECT repo_status2.ID 
 			FROM `repo_status` AS repo_status2
@@ -666,22 +666,22 @@ DELIMITER ;--
 --
 
 DELIMITER $$
-CREATE FUNCTION `ServerSetPriority`(`client_ID` VARCHAR(39), `server_name` TEXT, `priority_instruction` TEXT) RETURNS int(11)
+CREATE FUNCTION `ServerSetPriority`(`clientID` VARCHAR(39), `server_name` TEXT, `priority_instruction` TEXT) RETURNS int(11)
 BEGIN
 	IF
 	(
 		(
-			SELECT json_extract(GetClient(client_ID), '$.super')
+			SELECT json_extract(GetClient(clientID), '$.super')
 		) = 0
 	)
 	THEN
 		RETURN 401;
 	END IF;
 
-	INSERT INTO `server_priority_declaration`(`client_ID`, `server_ID`, `instruction_ID`)
+	INSERT INTO `server_priority_declaration`(`clientID`, `serverID`, `instructionID`)
 	VALUES 
 		(
-			client_ID,
+			clientID,
 			(
 				SELECT server_list.ID
 				FROM `server_list` AS server_list
@@ -696,10 +696,10 @@ BEGIN
 			)
 		);
 
-	INSERT INTO `server_priority_log`(`priority_ID`, `status_ID`)
+	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
 	VALUES
 		(
-			LAST_INSERT_ID(),
+			LAST_INSERTID(),
 			(
 				SELECT server_priority_status.ID
 				FROM `server_priority_status` AS server_priority_status
@@ -715,7 +715,7 @@ DELIMITER ;--
 --
 
 DELIMITER $$
-CREATE FUNCTION `ServerSetPriorityDone`(`server_name` TEXT, `server_password` TEXT, `priority_ID` TEXT) RETURNS int(11)
+CREATE FUNCTION `ServerSetPriorityDone`(`server_name` TEXT, `server_password` TEXT, `priorityID` TEXT) RETURNS int(11)
 BEGIN
 	IF (
 		(
@@ -723,7 +723,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -738,8 +738,8 @@ BEGIN
 			SELECT COUNT(*) 
 			FROM `server_priority_log` AS server_priority_log1
 			WHERE 
-				server_priority_log1.priority_ID = priority_ID 
-				AND server_priority_log1.status_ID = (
+				server_priority_log1.priorityID = priorityID 
+				AND server_priority_log1.statusID = (
 						SELECT server_priority_status1.ID 
 						FROM `server_priority_status` AS server_priority_status1
 						WHERE server_priority_status1.description = "Done" 
@@ -750,10 +750,10 @@ BEGIN
 	) THEN RETURN 409;
 	END IF;
 
-	INSERT INTO `server_priority_log` (`priority_ID`, `status_ID`)
+	INSERT INTO `server_priority_log` (`priorityID`, `statusID`)
 	VALUES
 	(
-		priority_ID,
+		priorityID,
 		(
 			SELECT server_priority_status2.ID 
 			FROM `server_priority_status` AS server_priority_status2
