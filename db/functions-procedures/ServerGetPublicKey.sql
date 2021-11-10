@@ -12,7 +12,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -27,7 +27,7 @@ BEGIN
 	FROM 
 		(
 			`server_list` AS server_list2
-			INNER JOIN `server_secrets` AS server_secrets2 ON server_secrets2.server_ID = server_list2.ID
+			INNER JOIN `server_secrets` AS server_secrets2 ON server_secrets2.serverID = server_list2.ID
 		) 
 	WHERE 
 		server_list2.name = server_name 

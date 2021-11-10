@@ -3,7 +3,7 @@
 --
 
 DELIMITER $$
-CREATE FUNCTION `ServerSetPriorityDone`(`server_name` TEXT, `server_password` TEXT, `priority_ID` TEXT) RETURNS int(11)
+CREATE FUNCTION `ServerSetPriorityDone`(`server_name` TEXT, `server_password` TEXT, `priorityID` TEXT) RETURNS int(11)
 BEGIN
 	IF (
 		(
@@ -11,7 +11,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -26,8 +26,8 @@ BEGIN
 			SELECT COUNT(*) 
 			FROM `server_priority_log` AS server_priority_log1
 			WHERE 
-				server_priority_log1.priority_ID = priority_ID 
-				AND server_priority_log1.status_ID = (
+				server_priority_log1.priorityID = priorityID 
+				AND server_priority_log1.statusID = (
 						SELECT server_priority_status1.ID 
 						FROM `server_priority_status` AS server_priority_status1
 						WHERE server_priority_status1.description = "Done" 
@@ -38,10 +38,10 @@ BEGIN
 	) THEN RETURN 409;
 	END IF;
 
-	INSERT INTO `server_priority_log` (`priority_ID`, `status_ID`)
+	INSERT INTO `server_priority_log` (`priorityID`, `statusID`)
 	VALUES
 	(
-		priority_ID,
+		priorityID,
 		(
 			SELECT server_priority_status2.ID 
 			FROM `server_priority_status` AS server_priority_status2

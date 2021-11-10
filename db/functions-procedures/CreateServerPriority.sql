@@ -3,22 +3,22 @@
 --
 
 DELIMITER $$
-CREATE PROCEDURE `CreateServerPriority`(IN `client_ID` VARCHAR(39), IN `instruction` TEXT, IN `server_ID` INT)
+CREATE PROCEDURE `CreateServerPriority`(IN `clientID` VARCHAR(39), IN `instruction` TEXT, IN `serverID` INT)
 BEGIN
-	INSERT INTO `server_priority_declaration`(`client_ID`, `instruction_ID`, `server_ID`)
+	INSERT INTO `server_priority_declaration`(`clientID`, `instructionID`, `serverID`)
 	VALUES (
-		client_ID, 
+		clientID, 
 		(
 			SELECT server_priority_instructions.ID
 			FROM `server_priority_instructions` AS server_priority_instructions
 			WHERE server_priority_instructions.name = instruction
 		),
-		server_ID
+		serverID
 	);
 	
-	INSERT INTO `server_priority_log`(`priority_ID`, `status_ID`)
+	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
 	VALUES (
-		LAST_INSERT_ID(), 
+		LAST_INSERTID(), 
 		(
 			SELECT server_priority_status.ID
 			FROM `server_priority_status` AS server_priority_status

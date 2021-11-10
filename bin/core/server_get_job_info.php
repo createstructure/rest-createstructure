@@ -22,7 +22,7 @@
 		private $server_name;
 		private $server_password;
 		private $server_public_key;
-		private $repo_ID;
+		private $repoID;
 		private $response;
 		
 		/**
@@ -34,7 +34,7 @@
 			$this->payload = $payload;
 			$this->server_name = $payload["server_name"];
 			$this->server_password = $payload["server_password"];
-			$this->repo_ID = $payload["repo_ID"];
+			$this->repoID = $payload["repoID"];
 		}
 		
 		/**
@@ -87,7 +87,7 @@
 				"sss",
 				$this->server_name,
 				$this->server_password,
-				$this->repo_ID
+				$this->repoID
 			);
 			$stmt->execute();
 			$result = $stmt->get_result();			

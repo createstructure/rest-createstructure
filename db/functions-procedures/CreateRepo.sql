@@ -3,9 +3,9 @@
 --
 
 DELIMITER $$
-CREATE FUNCTION `CreateRepo`(`client_ID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
+CREATE FUNCTION `CreateRepo`(`clientID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
 BEGIN
-	DECLARE consumer TEXT DEFAULT GetClient(client_ID); 
+	DECLARE consumer TEXT DEFAULT GetClient(clientID); 
 	IF
 	(
 		SELECT json_extract(
@@ -28,12 +28,12 @@ BEGIN
 		)
 	) > 0
 	THEN
-		INSERT INTO `repo_declaration`(`client_ID`, `data`)			
-		VALUES (client_ID, payload);
+		INSERT INTO `repo_declaration`(`clientID`, `data`)			
+		VALUES (clientID, payload);
 		
-		INSERT INTO `repo_log`(`repo_ID`, `status_ID`)
+		INSERT INTO `repo_log`(`repoID`, `statusID`)
 		VALUES (
-					LAST_INSERT_ID(), 
+					LAST_INSERTID(), 
 					(
 						SELECT repo_status.ID
 						FROM `repo_status` AS repo_status

@@ -20,7 +20,7 @@
 		private $conn;
 		private $server_name;
 		private $server_password;
-		private $repo_ID;
+		private $repoID;
 		private $response;
 		
 		/**
@@ -32,7 +32,7 @@
 			$this->payload = $payload;
 			$this->server_name = $payload["server_name"];
 			$this->server_password = $payload["server_password"];
-			$this->repo_ID = $payload["repo_ID"];
+			$this->repoID = $payload["repoID"];
 		}
 		
 		/**
@@ -77,7 +77,7 @@
 			// prepare and execute query
 			$stmt = $this->conn->get_connection()->stmt_init();
 			$stmt->prepare($query);
-			$stmt->bind_param("sss", $this->server_name, $this->server_password, $this->repo_ID);
+			$stmt->bind_param("sss", $this->server_name, $this->server_password, $this->repoID);
 			$stmt->execute();
 			$result = $stmt->get_result();			
 			$stmt->close();

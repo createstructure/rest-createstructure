@@ -100,9 +100,9 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <rect width="109" height="20" x="420" y="60" style="fill:#777;stroke:black;"/>
    <text width="109" height="20" x="425" y="74" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
    <rect width="109" height="20" x="420" y="80" style="fill:#fff;stroke:black;"/>
-   <text width="109" height="20" x="425" y="94" style="fill:black;" font-family="Arial" font-size="16px">client_ID</text>
+   <text width="109" height="20" x="425" y="94" style="fill:black;" font-family="Arial" font-size="16px">clientID</text>
    <rect width="109" height="20" x="420" y="100" style="fill:#fff;stroke:black;"/>
-   <text width="109" height="20" x="425" y="114" style="fill:black;" font-family="Arial" font-size="16px">account_ID</text>
+   <text width="109" height="20" x="425" y="114" style="fill:black;" font-family="Arial" font-size="16px">accountID</text>
    <rect width="109" height="20" x="420" y="120" style="fill:#fff;stroke:black;"/>
    <text width="109" height="20" x="425" y="134" style="fill:black;" font-family="Arial" font-size="16px">description</text>
    <rect width="109" height="20" x="420" y="140" style="fill:#fff;stroke:black;"/>
@@ -130,7 +130,7 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <rect width="123" height="20" x="50" y="280" style="fill:#777;stroke:black;"/>
    <text width="123" height="20" x="55" y="294" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
    <rect width="123" height="20" x="50" y="300" style="fill:#fff;stroke:black;"/>
-   <text width="123" height="20" x="55" y="314" style="fill:black;" font-family="Arial" font-size="16px">client_ID</text>
+   <text width="123" height="20" x="55" y="314" style="fill:black;" font-family="Arial" font-size="16px">clientID</text>
    <rect width="123" height="20" x="50" y="320" style="fill:#fff;stroke:black;"/>
    <text width="123" height="20" x="55" y="334" style="fill:black;" font-family="Arial" font-size="16px">data</text>
    <rect width="123" height="20" x="50" y="340" style="fill:#fff;stroke:black;"/>
@@ -142,11 +142,11 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <rect width="88" height="20" x="490" y="270" style="fill:#777;stroke:black;"/>
    <text width="88" height="20" x="495" y="284" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
    <rect width="88" height="20" x="490" y="290" style="fill:#fff;stroke:black;"/>
-   <text width="88" height="20" x="495" y="304" style="fill:black;" font-family="Arial" font-size="16px">repo_ID</text>
+   <text width="88" height="20" x="495" y="304" style="fill:black;" font-family="Arial" font-size="16px">repoID</text>
    <rect width="88" height="20" x="490" y="310" style="fill:#fff;stroke:black;"/>
-   <text width="88" height="20" x="495" y="324" style="fill:black;" font-family="Arial" font-size="16px">server_ID</text>
+   <text width="88" height="20" x="495" y="324" style="fill:black;" font-family="Arial" font-size="16px">serverID</text>
    <rect width="88" height="20" x="490" y="330" style="fill:#fff;stroke:black;"/>
-   <text width="88" height="20" x="495" y="344" style="fill:black;" font-family="Arial" font-size="16px">status_ID</text>
+   <text width="88" height="20" x="495" y="344" style="fill:black;" font-family="Arial" font-size="16px">statusID</text>
    <rect width="88" height="20" x="490" y="350" style="fill:#fff;stroke:black;"/>
    <text width="88" height="20" x="495" y="364" style="fill:black;" font-family="Arial" font-size="16px">description</text>
    <rect width="88" height="20" x="490" y="370" style="fill:#fff;stroke:black;"/>
@@ -174,11 +174,11 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <rect width="188" height="20" x="40" y="840" style="fill:#777;stroke:black;"/>
    <text width="188" height="20" x="45" y="854" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
    <rect width="188" height="20" x="40" y="860" style="fill:#fff;stroke:black;"/>
-   <text width="188" height="20" x="45" y="874" style="fill:black;" font-family="Arial" font-size="16px">server_ID</text>
+   <text width="188" height="20" x="45" y="874" style="fill:black;" font-family="Arial" font-size="16px">serverID</text>
    <rect width="188" height="20" x="40" y="880" style="fill:#fff;stroke:black;"/>
-   <text width="188" height="20" x="45" y="894" style="fill:black;" font-family="Arial" font-size="16px">client_ID</text>
+   <text width="188" height="20" x="45" y="894" style="fill:black;" font-family="Arial" font-size="16px">clientID</text>
    <rect width="188" height="20" x="40" y="900" style="fill:#fff;stroke:black;"/>
-   <text width="188" height="20" x="45" y="914" style="fill:black;" font-family="Arial" font-size="16px">instruction_ID</text>
+   <text width="188" height="20" x="45" y="914" style="fill:black;" font-family="Arial" font-size="16px">instructionID</text>
    <rect width="188" height="20" x="40" y="920" style="fill:#fff;stroke:black;"/>
    <text width="188" height="20" x="45" y="934" style="fill:black;" font-family="Arial" font-size="16px">description</text>
    <rect width="188" height="20" x="40" y="940" style="fill:#fff;stroke:black;"/>
@@ -198,9 +198,9 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <rect width="130" height="20" x="840" y="840" style="fill:#777;stroke:black;"/>
    <text width="130" height="20" x="845" y="854" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
    <rect width="130" height="20" x="840" y="860" style="fill:#fff;stroke:black;"/>
-   <text width="130" height="20" x="845" y="874" style="fill:black;" font-family="Arial" font-size="16px">priority_ID</text>
+   <text width="130" height="20" x="845" y="874" style="fill:black;" font-family="Arial" font-size="16px">priorityID</text>
    <rect width="130" height="20" x="840" y="880" style="fill:#fff;stroke:black;"/>
-   <text width="130" height="20" x="845" y="894" style="fill:black;" font-family="Arial" font-size="16px">status_ID</text>
+   <text width="130" height="20" x="845" y="894" style="fill:black;" font-family="Arial" font-size="16px">statusID</text>
    <rect width="130" height="20" x="840" y="900" style="fill:#fff;stroke:black;"/>
    <text width="130" height="20" x="845" y="914" style="fill:black;" font-family="Arial" font-size="16px">description</text>
    <rect width="130" height="20" x="840" y="920" style="fill:#fff;stroke:black;"/>
@@ -218,7 +218,7 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <rect width="131" height="20" x="470" y="550" style="fill:#777;stroke:black;"/>
    <text width="131" height="20" x="475" y="564" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
    <rect width="131" height="20" x="470" y="570" style="fill:#fff;stroke:black;"/>
-   <text width="131" height="20" x="475" y="584" style="fill:black;" font-family="Arial" font-size="16px">server_ID</text>
+   <text width="131" height="20" x="475" y="584" style="fill:black;" font-family="Arial" font-size="16px">serverID</text>
    <rect width="131" height="20" x="470" y="590" style="fill:#fff;stroke:black;"/>
    <text width="131" height="20" x="475" y="604" style="fill:black;" font-family="Arial" font-size="16px">server_password</text>
    <rect width="131" height="20" x="470" y="610" style="fill:#fff;stroke:black;"/>

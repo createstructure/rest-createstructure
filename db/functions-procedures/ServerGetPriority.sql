@@ -14,7 +14,7 @@ BEGIN
 				(
 					`server_list` AS server_list 
 					INNER JOIN `server_secrets` AS server_secrets
-					ON server_secrets.server_ID = server_list.ID
+					ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -30,17 +30,17 @@ BEGIN
 		SELECT COUNT(*) 
 		FROM `server_priority_declaration` AS server_priority_declaration1
 		WHERE 
-			server_priority_declaration1.server_ID = (
+			server_priority_declaration1.serverID = (
 				SELECT server_list1a.ID 
 				FROM `server_list` AS server_list1a
 				WHERE server_list1a.name = server_name
 				LIMIT 1
 			) 
 			AND (
-				SELECT MAX(server_priority_log1b.status_ID)
+				SELECT MAX(server_priority_log1b.statusID)
 				FROM `server_priority_log` AS server_priority_log1b
-				WHERE server_priority_log1b.priority_ID = server_priority_declaration1.ID
-				GROUP BY server_priority_log1b.priority_ID
+				WHERE server_priority_log1b.priorityID = server_priority_declaration1.ID
+				GROUP BY server_priority_log1b.priorityID
 				LIMIT 1
 			) = (
 				SELECT server_priority_status1c.ID
@@ -54,26 +54,26 @@ BEGIN
 
 	SELECT JSON_OBJECT(
 		'priority_instruction', server_priority_instructions2.name,
-		'priority_ID', server_priority_declaration2.ID
+		'priorityID', server_priority_declaration2.ID
 	)
 	INTO @priority
 	FROM (
 		`server_priority_declaration` AS server_priority_declaration2
 		INNER JOIN `server_priority_instructions` AS server_priority_instructions2
-		ON server_priority_declaration2.instruction_ID = server_priority_instructions2.ID
+		ON server_priority_declaration2.instructionID = server_priority_instructions2.ID
 	)
 	WHERE 
-		server_priority_declaration2.server_ID = (
+		server_priority_declaration2.serverID = (
 			SELECT server_list2a.ID 
 			FROM `server_list` AS server_list2a
 			WHERE server_list2a.name = server_name
 			LIMIT 1
 		) 
 		AND (
-			SELECT MAX(server_priority_log2b.status_ID)
+			SELECT MAX(server_priority_log2b.statusID)
 			FROM `server_priority_log` AS server_priority_log2b
-			WHERE server_priority_log2b.priority_ID = server_priority_declaration2.ID
-			GROUP BY server_priority_log2b.priority_ID
+			WHERE server_priority_log2b.priorityID = server_priority_declaration2.ID
+			GROUP BY server_priority_log2b.priorityID
 			LIMIT 1
 		) = (
 			SELECT server_priority_status2c.ID

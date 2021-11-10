@@ -8,9 +8,9 @@ BEGIN
 	INSERT INTO `server_list`(`name`, `description`)
 	VALUES (name, description);
 	
-	INSERT INTO `server_secrets`(`server_ID`, `server_password`, `server_public_key`)
+	INSERT INTO `server_secrets`(`serverID`, `server_password`, `server_public_key`)
 	VALUES (
-				LAST_INSERT_ID(), 
+				LAST_INSERTID(), 
 				server_password,
 				server_public_key
 		);

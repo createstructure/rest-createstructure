@@ -13,7 +13,7 @@ BEGIN
 			FROM 
 				(
 					`server_list` AS server_list 
-					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.server_ID = server_list.ID
+					INNER JOIN `server_secrets` AS server_secrets ON server_secrets.serverID = server_list.ID
 				) 
 			WHERE 
 				server_list.name = server_name 
@@ -29,14 +29,14 @@ BEGIN
 	FROM 
 		(
 			SELECT 
-				repo_log1.repo_ID 
+				repo_log1.repoID 
 			FROM 
 				(
 					`repo_log` AS repo_log1 
-					INNER JOIN `repo_status` AS repo_status1 ON repo_log1.status_ID = repo_status1.ID
+					INNER JOIN `repo_status` AS repo_status1 ON repo_log1.statusID = repo_status1.ID
 				) 
 			GROUP BY 
-				repo_log1.repo_ID 
+				repo_log1.repoID 
 			HAVING 
 				(
 					SELECT 
@@ -44,7 +44,7 @@ BEGIN
 					FROM 
 						`repo_status` AS repo_status1b 
 					WHERE 
-						repo_status1b.ID = MAX(repo_log1.status_ID)
+						repo_status1b.ID = MAX(repo_log1.statusID)
 				) = "To do"
 		) AS tmp;
 
@@ -53,14 +53,14 @@ BEGIN
 	RETURN -2;
 	END IF;
 
-	SELECT repo_log2.repo_ID
-	INTO @repo_ID 
+	SELECT repo_log2.repoID
+	INTO @repoID 
 	FROM 
 		(
 			`repo_log` AS repo_log2 
-			INNER JOIN `repo_status` AS repo_status2 ON repo_log2.status_ID = repo_status2.ID
+			INNER JOIN `repo_status` AS repo_status2 ON repo_log2.statusID = repo_status2.ID
 		) 
-	GROUP BY repo_log2.repo_ID 
+	GROUP BY repo_log2.repoID 
 	HAVING 
 		(
 			SELECT 
@@ -68,14 +68,14 @@ BEGIN
 			FROM 
 				`repo_status` AS repo_status2b 
 			WHERE 
-				repo_status2b.ID = MAX(repo_log2.status_ID)
+				repo_status2b.ID = MAX(repo_log2.statusID)
 		) = "To do" 
 	LIMIT 1;
 
-	INSERT INTO `repo_log` (`repo_ID`, `server_ID`, `status_ID`) 
+	INSERT INTO `repo_log` (`repoID`, `serverID`, `statusID`) 
 	VALUES 
 		(
-			@repo_ID, 
+			@repoID, 
 			(
 				SELECT server_list3.ID 
 				FROM `server_list` AS server_list3 
@@ -89,6 +89,6 @@ BEGIN
 			)
 		);
 		
-	RETURN @repo_ID;
+	RETURN @repoID;
 END$$
 DELIMITER ;
