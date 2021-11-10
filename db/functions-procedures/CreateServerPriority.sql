@@ -18,7 +18,7 @@ BEGIN
 	
 	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
 	VALUES (
-		LAST_INSERTID(), 
+		LAST_INSERT_ID(), 
 		(
 			SELECT server_priority_status.ID
 			FROM `server_priority_status` AS server_priority_status

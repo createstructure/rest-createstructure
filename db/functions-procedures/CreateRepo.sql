@@ -33,7 +33,7 @@ BEGIN
 		
 		INSERT INTO `repo_log`(`repoID`, `statusID`)
 		VALUES (
-					LAST_INSERTID(), 
+					LAST_INSERT_ID(), 
 					(
 						SELECT repo_status.ID
 						FROM `repo_status` AS repo_status

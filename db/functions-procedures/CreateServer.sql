@@ -10,7 +10,7 @@ BEGIN
 	
 	INSERT INTO `server_secrets`(`serverID`, `server_password`, `server_public_key`)
 	VALUES (
-				LAST_INSERTID(), 
+				LAST_INSERT_ID(), 
 				server_password,
 				server_public_key
 		);
