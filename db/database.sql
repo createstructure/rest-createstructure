@@ -224,7 +224,7 @@ BEGIN
 		
 		INSERT INTO `repo_log`(`repoID`, `statusID`)
 		VALUES (
-					LAST_INSERTID(), 
+					LAST_INSERT_ID(), 
 					(
 						SELECT repo_status.ID
 						FROM `repo_status` AS repo_status
@@ -249,7 +249,7 @@ BEGIN
 	
 	INSERT INTO `server_secrets`(`serverID`, `server_password`, `server_public_key`)
 	VALUES (
-				LAST_INSERTID(), 
+				LAST_INSERT_ID(), 
 				server_password,
 				server_public_key
 		);
@@ -274,7 +274,7 @@ BEGIN
 	
 	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
 	VALUES (
-		LAST_INSERTID(), 
+		LAST_INSERT_ID(), 
 		(
 			SELECT server_priority_status.ID
 			FROM `server_priority_status` AS server_priority_status
@@ -699,7 +699,7 @@ BEGIN
 	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
 	VALUES
 		(
-			LAST_INSERTID(),
+			LAST_INSERT_ID(),
 			(
 				SELECT server_priority_status.ID
 				FROM `server_priority_status` AS server_priority_status
