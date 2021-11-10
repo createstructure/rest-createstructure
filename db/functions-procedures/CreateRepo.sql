@@ -1,5 +1,5 @@
 --
--- Connected with create_repo.php
+-- Connected to 
 --
 
 DELIMITER $$

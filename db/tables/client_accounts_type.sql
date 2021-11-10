@@ -11,7 +11,7 @@ CREATE TABLE `client_accounts_type` (
   `max_m` int(11) NOT NULL COMMENT 'Maximum repository creation for every minute',
   `description` text DEFAULT NULL COMMENT 'An optional description',
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'The time of the last change',
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table for the definition of available accounts';
 
 --

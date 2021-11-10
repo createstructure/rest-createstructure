@@ -12,8 +12,8 @@
 	
 	class Key{
 		// class variabile(s)
-		private $public_key_string = ""; // TODO
-		private $private_key_string = ""; // TODO
+		private $public_key_string = "<PUBLIC_KEY>"; // TODO
+		private $private_key_string = "<PRIVATE_KEY>"; // TODO
 		private $public_key;
 		private $private_key;
 

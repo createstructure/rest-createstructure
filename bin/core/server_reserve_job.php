@@ -62,7 +62,7 @@
 					return array(
 						"code" => 200,
 						"message" => "Reserved repo",
-						"repo_id" => $this->response
+						"repoID" => $this->response
 					);
 			}
 		}

@@ -42,7 +42,7 @@
 						"action" => "Returns a random welcome message",
 						"request" => "{\"request\": \"welcome\"}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <random_welcome_message>}",
+						"response" => "{\"code\": <code>, \"message\": <random_welcome_message>}",
 						"notes" => "Basic request"
 					),
 					"help" => array(
@@ -51,7 +51,7 @@
 						"action" => "Returns a message to help user to use this API",
 						"request" => "{\"request\": \"help\"} or {}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <help_generic_message>, \"help\": {<REST_command_name>: {\"name\": <REST_command_name>, \"type\": <GET_or_POST>, \"action\": <functionality>, \"request\": <request_structure>, \"URL\": <REST_URL>, \"response\": <response_structure>, \"notes\": <description>}, ...}}",
+						"response" => "{\"code\": <code>, \"message\": <help_generic_message>, \"help\": {<REST_command_name>: {\"name\": <REST_command_name>, \"type\": <GET_or_POST>, \"action\": <functionality>, \"request\": <request_structure>, \"URL\": <REST_URL>, \"response\": <response_structure>, \"notes\": <description>}, ...}}",
 						"notes" => "Gives to the user all the information to use this REST API"
 					),
 					"auth" => array(
@@ -60,7 +60,7 @@
 						"action" => "Check if account is it ok",
 						"request" => "{\"request\": \"login\", \"payload\": {\"username\": <GitHub_username>, \"token\": <Github_token>}}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <ok_or_error_message>, \"sub_info\": {\"name\": <sub_name>, \"active\": <true/false>, \"super\": <true/false>, \"max\": {\"day\": <max_usages_for_day>, \"h\": <max_usages_for_hour>, \"m\": <max_usages_for_minute>}, \"remaining\": {\"day\": <remaining_usages_for_day>, \"h\": <remaining_usages_for_hour>, \"m\": <remaining_usages_for_minute>}}}",
+						"response" => "{\"code\": <code>, \"message\": <ok_or_error_message>, \"sub_info\": {\"name\": <sub_name>, \"active\": <true/false>, \"super\": <true/false>, \"max\": {\"day\": <max_usages_for_day>, \"h\": <max_usages_for_hour>, \"m\": <max_usages_for_minute>}, \"remaining\": {\"day\": <remaining_usages_for_day>, \"h\": <remaining_usages_for_hour>, \"m\": <remaining_usages_for_minute>}}}",
 						"notes" => "This is userfull to get any usefull info about a consumer"
 					),
 					"create_repo" => array(
@@ -69,7 +69,7 @@
 						"action" => "Permits user to create a repository",
 						"request" => "{\"request\": \"create_repo\", payload: {\"token\": <GitHub_token>, \"username\": <GitHub_username>, \"answers\": { \"name\": <New_repo_name> [, \"template\": <Template_to_use(eg. default or Owner/repo-template)>] [, \"descr\": <Description>] [, \"prefix\": <The_prefix_of_the_repo(if you want once)>] [, \"private\": <true/false>] [, \"isOrg\": <If_you_want_your_repo_in_an_organization(true/false)> , \"org\": <Name_of_the_org_if_isOrg_true> [, \"team\": <The_name_of_the_team_if_isOrg_true>] ]}}}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message>}",
+						"response" => "{\"code\": <code>, \"message\": <response_message>}",
 						"notes" => "This REST API call permits to the consumer to ask to createstructure\"s service to create a repository"
 					),
 					"server_reserve_job" => array(
@@ -78,7 +78,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_reserve_job\", \"server_name\": <server_name>, \"server_password\": <server_password>}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message>, \"repo_id\": <repo_id>}",
+						"response" => "{\"code\": <code>, \"message\": <response_message>, \"repoID\": <repoID>}",
 						"notes" => "Usefull for the server to reserve a repo to create it"
 					),
 					"server_get_job_info" => array(
@@ -87,7 +87,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_get_job_info\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repoID\": <repoID>}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message>, \"payload\": [<payload_try1>, ...]}",
+						"response" => "{\"code\": <code>, \"message\": <response_message>, \"repo_info\": <repo_info>}",
 						"notes" => "Usefull for the server to ask a repo info to create it"
 					),
 					"server_set_job_done" => array(
@@ -96,7 +96,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_set_job_done\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"repoID\": <repoID>}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message>}",
+						"response" => "{\"code\": <code>, \"message\": <response_message>}",
 						"notes" => "Usefull for the server to set repo job as done"
 					),
 					"server_set_priority" => array(
@@ -105,7 +105,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_set_priority\", \"username\": <GitHub_username>, \"token\": <Github_token>, \"server_name\": <server_name>, \"server_priority\": <server_priority>}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message>}",
+						"response" => "{\"code\": <code>, \"message\": <response_message>}",
 						"notes" => "Ask to do some commands to a server without ssh"
 					),
 					"server_get_priority" => array(
@@ -114,7 +114,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_get_priority\", \"server_name\": <server_name>, \"server_password\": <server_password>}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message> [, \"priority_instruction\": <priority_instruction>, \"priorityID\": <priorityID>]}",
+						"response" => "{\"code\": <code>, \"message\": <response_message> [, \"priority_instruction\": <priority_instruction>, \"priorityID\": <priorityID>]}",
 						"notes" => "Usefull for the server to get the priority"
 					),
 					"server_set_priority_done" => array(
@@ -123,7 +123,7 @@
 						"action" => "functionality",
 						"request" => "{\"request\": \"server_set_priority_done\", \"server_name\": <server_name>, \"server_password\": <server_password>, \"priorityID\": <priorityID>}",
 						"URL" => "/",
-						"response" => "{\"status\": <status_code>, \"message\": <response_message>}",
+						"response" => "{\"code\": <code>, \"message\": <response_message>}",
 						"notes" => "Usefull to set priority as done"
 					)
 				)
