@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * Manage Webhook secret(s)
+	 * Action interface 
 	 *
 	 * PHP version 7.4.16
 	 *
@@ -9,25 +9,20 @@
 	 * @license    GNU
 	 * @link       https://github.com/createstructure/rest-createstructure
 	 */
-
-	class Webhook{
-		// class variabile(s)
-		private $secret = ""; // TODO
-
+	
+	interface Action{
 		/**
 		 * Constructor
-		 */ 
-		public function __construct(){
-		}
+		 * 
+		 * @param payload		The payload of the request
+		 */
+		public function __construct($payload);
 
 		/**
-		 * Get the database connection
-		 *
-		 * @return secret 		Webhook secret
+		 * Run main code
+		 * 
+		 * @return array Array with the response, if there wasn't any error
 		 */ 
-		public function getSecret(){
-			return $this->secret;
-		}
-	}
+		public function run();
+	}	
 ?>
-

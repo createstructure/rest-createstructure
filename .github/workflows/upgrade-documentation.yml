@@ -1,0 +1,261 @@
+name: Upgrade documentation (Wiki + README.md)
+on: [workflow_dispatch, push]
+
+jobs:
+  upgrade-documentation:
+    runs-on: ubuntu-latest
+    environment:
+      name: documentation
+    steps:
+    - name: Initial setup
+      run: |
+        sudo apt update -y
+        sudo pip install BeautifulSoup4
+        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
+        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -b $(echo ${GITHUB_REF#refs/heads/}) repo
+        rm -f wiki/*.md
+    - name: Home file
+      run: |
+        cd wiki
+        python3 << EOF
+        import urllib.request
+        import json
+        from bs4 import BeautifulSoup
+        def get_json():
+          """ Returns the json with REST description
+          """
+          return json.loads(urllib.request.urlopen("$GITHUB_API_URL/repos/$GITHUB_REPOSITORY").read().decode())
+        def get_social_img():
+          """ Get social image
+          """
+          soup = BeautifulSoup(urllib.request.urlopen("$GITHUB_SERVER_URL/$GITHUB_REPOSITORY").read().decode(), 'html.parser')
+          return soup.find("meta", property="og:image")["content"]
+        def get_content():
+          """ Returns the file content
+          """
+          social_img = get_social_img()
+          file_content = "## :octocat: Description :octocat:\n"
+          file_content += get_json()["description"].replace(". ", ".\n\n").replace("wiki", "[wiki]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/wiki)") + "\n"
+          file_content += f"![$GITHUB_REPOSITORY]({social_img})\n"
+          return file_content
+        if __name__ == "__main__":
+          open("Home.md", "w+").write(str(get_content()))                    
+        EOF
+    - name: REST-actions file
+      run: |
+        cd wiki
+        python3 << EOF
+        import urllib.request
+        import json 
+        def get_json():
+          """ Returns the json with REST description
+          """
+          return json.loads(urllib.request.urlopen("https://www.castellanidavide.it/other/createstructure/api/").read().decode())["help"]
+        def get_content():
+          """ Returns the file content
+          """
+          file_content = "## :octocat: REST API actions :octocat:\n"
+          headers = ["name", "type", "action", "request", "URL", "response", "notes"]
+          for header in headers:
+            file_content += f"| {header} "
+          file_content += "|\n"
+          file_content += "| --- " * len(headers) + "|\n"
+          for _, action in get_json().items():
+            for header in headers:
+              file_content += f"| {action[header]} "
+            file_content += "|\n"
+          return file_content
+        if __name__ == "__main__":
+          open("REST-Actions.md", "w+").write(str(get_content()))                    
+        EOF
+    - name: CHANGELOG file
+      run: |
+        cp repo/docs/CHANGELOG.md wiki/
+        cd wiki
+        sed -i 's/Changelog/:octocat: Changelog :octocat:/g' CHANGELOG.md
+        sed -i 's/# /## /g' CHANGELOG.md
+    - name: database-structure file
+      run: |
+        cd wiki
+        echo "## :octocat: Database structure (ERD) :octocat:" > Database-Structure.md
+        echo "" >> Database-Structure.md
+        echo "![ERD](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/ERD.svg)" >> Database-Structure.md
+    - name: Directory structure file
+      run: |
+        cd wiki
+        sudo apt install tree -y
+        echo "## :octocat: Directory structure :octocat:" > Directory-Structure.md
+        echo "" >> Directory-Structure.md
+        echo "\`\`\`" >> Directory-Structure.md
+        tree ../repo >> Directory-Structure.md
+        echo "\`\`\`" >> Directory-Structure.md
+        sed -i 's/..\/repo//g' Directory-Structure.md
+        sed -i 's/bin/bin # PHP source code/g' Directory-Structure.md
+        sed -i 's/config/config # configuration file where to store passwords, tokens, .../g' Directory-Structure.md
+        sed -i 's/core/core # main part of the REST API/g' Directory-Structure.md
+        sed -i 's/action.php/action.php # interface for any of the other actions/g' Directory-Structure.md
+        sed -i 's/splitter.php/splitter.php # where the request is splitted to the needed action/g' Directory-Structure.md
+        sed -i 's/db/db # DB utilities/g' Directory-Structure.md
+        sed -i 's/functions-procedures/functions-procedures # folder containing all the needed functions and procedures/g' Directory-Structure.md
+        sed -i 's/tables/tables # DB tables definition/g' Directory-Structure.md
+        sed -i 's/docs/docs # documentation/g' Directory-Structure.md
+    - name: Rebuild the REST API locally file
+      run: |
+        cd wiki
+        echo "## :octocat: Rebuild the REST API locally :octocat:" >> Rebuild-the-REST-API-locally.md
+        echo "Install the REST API locally permits you to do some debug and try new configurations." >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "> ATTENTION" >> Rebuild-the-REST-API-locally.md
+        echo ">" >> Rebuild-the-REST-API-locally.md
+        echo "> Some features, like subscription with GitHub marketplace, can't be done with the local configuration." >> Rebuild-the-REST-API-locally.md
+        echo ">" >> Rebuild-the-REST-API-locally.md
+        echo "> To do these actions you need to run manually the functions, in the previous example \`CreateUpdateRemoveClient\`" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### Steps:" >> Rebuild-the-REST-API-locally.md
+        echo "1. [Install VirtualBox on the PC](#1-install-virtualbox-on-the-pc)" >> Rebuild-the-REST-API-locally.md
+        echo "2. [Install Ubuntu](#2-install-ubuntu)" >> Rebuild-the-REST-API-locally.md
+        echo "3. [Install dependencies](#3-install-dependencies)" >> Rebuild-the-REST-API-locally.md
+        echo "4. [Add PHP source code](#4-add-php-source-code)" >> Rebuild-the-REST-API-locally.md
+        echo "5. [Create server](#5-create-server)" >> Rebuild-the-REST-API-locally.md
+        echo "6. [Use REST API](#6-use-rest-api)" >> Rebuild-the-REST-API-locally.md
+        echo "7. [Do the changes/ debug you want](#7-do-the-changes-debug-you-want)" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### 1. Install VirtualBox on the PC" >> Rebuild-the-REST-API-locally.md
+        echo "For installation we suggest VirtualBox, a tool that allows you to create one or more virtual machines :computer:." >> Rebuild-the-REST-API-locally.md
+        echo "If any of these crashes, in any case, your PC will not lose data, at most you will have to restart it :smile:." >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "To install VirtualBox on your PC you need to:" >> Rebuild-the-REST-API-locally.md
+        echo "- Get in into the UEFI" >> Rebuild-the-REST-API-locally.md
+        echo "- Enable the function which name is like \"Virtualization\" (for each UEFI this step is different but similar)" >> Rebuild-the-REST-API-locally.md
+        echo "- Save the configuration and restart the PC" >> Rebuild-the-REST-API-locally.md
+        echo "- Go to the [VirtualBox website](https://www.virtualbox.org/)" >> Rebuild-the-REST-API-locally.md
+        echo "- Press \"Download\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Run the downloaded file" >> Rebuild-the-REST-API-locally.md
+        echo "- Follow the installation steps" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### 2. Install Ubuntu" >> Rebuild-the-REST-API-locally.md
+        echo "As the OS we suggest to use Ubuntu, because it is lightweight (for RAM and CPU) and it's free." >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "To install Ubuntu on VirtualBox you need to:" >> Rebuild-the-REST-API-locally.md
+        echo "- Download the last LTS version of Ubuntu by the following link: [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop)" >> Rebuild-the-REST-API-locally.md
+        echo "> Now you can continue with the other steps during the download" >> Rebuild-the-REST-API-locally.md
+        echo "- Open VirtualBox" >> Rebuild-the-REST-API-locally.md
+        echo "- Press \"New\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Compile the form" >> Rebuild-the-REST-API-locally.md
+        echo "    - As name put \"rest-createstructure\"" >> Rebuild-the-REST-API-locally.md
+        echo "    - As Type: \"Linux\"" >> Rebuild-the-REST-API-locally.md
+        echo "    - As version: \"Ubuntu (64-bit)\" or \"Ubuntu (32-bit)\"" >> Rebuild-the-REST-API-locally.md
+        echo "    - Press \"Next >\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Set the RAM to use for the VirtualMachine, at most half of local RAM and press \"Next >\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Leave \"Create a virtual hard disk now\" and press \"Create\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Leave \"VDI ...\" and press \"Next >\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Leave \"Dynamically allocated\" and press \"Next >\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Change the hard disk memory, we suggest 16GB and press \"Create\"" >> Rebuild-the-REST-API-locally.md
+        echo "> Make sure that Ubuntu download is finished before to continue" >> Rebuild-the-REST-API-locally.md
+        echo "- On the VirtualBox console, selecting the created VM, press \"Start\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Select as start-up disk Ubuntu, already downloaded" >> Rebuild-the-REST-API-locally.md
+        echo "    - Press the folder icon" >> Rebuild-the-REST-API-locally.md
+        echo "    - Press \"Add\", in the top menu" >> Rebuild-the-REST-API-locally.md
+        echo "    - Select the Ubuntu iso, the file will have a structure like \"ubuntu-version-other_info.iso\"" >> Rebuild-the-REST-API-locally.md
+        echo "    - Press \"Choose\" and \"Start\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Follow the install steps (the installation needs some minutes)" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### 3. Install dependencies" >> Rebuild-the-REST-API-locally.md
+        echo "Now you have to install lamp (Linux Apache MySQL (DB) PHP) on the VM." >> Rebuild-the-REST-API-locally.md
+        echo "> We suggest you to open this guide on the virtual machine, so you can copy and paste easlier the following commands. " >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "To install Dependes on the Virtual Machine you need to:" >> Rebuild-the-REST-API-locally.md
+        echo "- On the VM (Virtual Machine) open the terminal (\`Ctrl + Alt + T\`)" >> Rebuild-the-REST-API-locally.md
+        echo "- On the terminal paste \`sudo apt install apache2 curl mysql-server php libapache2-mod-php php-mysql git -y; sudo systemctl restart apache2\` and press enter (you have to insert your password)" >> Rebuild-the-REST-API-locally.md
+        echo "- On the terminal paste \`sudo apt install phpmyadmin -y; sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf; sudo a2enconf phpmyadmin.conf; sudo systemctl reload apache2.service\`" >> Rebuild-the-REST-API-locally.md
+        echo "    - leave \"apache2\" in the selecting menu" >> Rebuild-the-REST-API-locally.md
+        echo "    - when required select \"\\<Yes\\>\"" >> Rebuild-the-REST-API-locally.md
+        echo "    - set a password for phpmyadmin, after that select \"\\<Ok\\>\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Check the installation opening Firefox (the first item in the left menu bar) and as link put \`localhost\`" >> Rebuild-the-REST-API-locally.md
+        echo "- If it works check also \`localhost/phpmyadmin/\` as link, better if in a new tab" >> Rebuild-the-REST-API-locally.md
+        echo "    - To do the login here put \"phpmyadmin\" ad username and the password you setted a while go" >> Rebuild-the-REST-API-locally.md
+        echo "### 4. Add PHP source code" >> Rebuild-the-REST-API-locally.md
+        echo "To add the PHP source code on VirtualBox you need to:" >> Rebuild-the-REST-API-locally.md
+        echo "- Go back to the terminal and type \`cd /var/www/html; sudo git clone $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git; cd rest-createstructure/bin/config/; sed -i 's/<YOUR_DB_NAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_USERNAME>/localhost/g' database.php; sed -i 's/<YOUR_DB_PASSWORD>/localhost/g' database.php; sed -i 's/<YOUR_DB_TABLE_NAME>/createstructure/g' database.php; sed -i 's/ \\/\\/ TODO//g' database.php\`" >> Rebuild-the-REST-API-locally.md
+        echo "- Generate GPG key: \`gpg --gen-key\` and insert your data (DO NOT PUT ANY PASSWORD)" >> Rebuild-the-REST-API-locally.md
+        echo "- On the terminal type \`echo $gpg --armor --export <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPUBLIC\\nKEY\\nBLOCK/ PGP PUBLIC KEY BLOCK/g'\` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild-the-REST-API-locally.md
+        echo "- Type \`sudo nano key.php\` and replace <PUBLIC_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild-the-REST-API-locally.md
+        echo "- On the terminal type \`echo $gpg --armor --export-secret-keys <YOUR_EMAIL>) | sed -e 's/ /\\n/g' -e 's/\\nPGP\\nPRIVATE\\nKEY\\nBLOCK/ PGP PRIVATE KEY BLOCK/g'\` (Replace in the string <YOUR_EMAIL> with your email) and copy the result (to copy Ctrl + Alt + C)" >> Rebuild-the-REST-API-locally.md
+        echo "- Type \`sudo nano key.php\` and replace <PRIVATE_KEY> with the copied text (to paste Ctrl + Alt + V) and save (Ctrl + X => Y => Enter)" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### 5. Add DB basic structure" >> Rebuild-the-REST-API-locally.md
+        echo "Now you will create a DB and the basic structure." >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "To do that you need to:" >> Rebuild-the-REST-API-locally.md
+        echo "- Go back to the phpmyadmin page" >> Rebuild-the-REST-API-locally.md
+        echo "- On the hight menu select \"SQL\"" >> Rebuild-the-REST-API-locally.md
+        echo "- Copy [this](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/v10-beta/db/database.sql) and paste it in the box" >> Rebuild-the-REST-API-locally.md
+        echo "- Press \"Go\"" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### 6. Use REST API" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "To use the REST API you need to:" >> Rebuild-the-REST-API-locally.md
+        echo "- On the terminal write: \`curl -d '{<INSERT_YOUR_REQUEST>}' -H \"Content-Type: application/json\" -X POST http://localhost/rest-createstructure/bin/ | json_pp -json_opt pretty,canonical\`, replacing <INSERT_YOUR_REQUEST> with your request, see requests rupported [here]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/wiki/REST-Actions)" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+        echo "### 7. Do the changes/ debug you want " >> Rebuild-the-REST-API-locally.md
+        echo "Now you can try any changes you want and, if you want, improve the REST API (using [Issues]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/issues), [Pull requests]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/pulls), or if you want to suggest/ discuss on how to improve [Discussion]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/discussions))" >> Rebuild-the-REST-API-locally.md
+        echo "" >> Rebuild-the-REST-API-locally.md
+    - name: _Footer file
+      run: |
+        cd wiki
+        echo "---" > _Footer.md
+        echo "Made w/ :heart: by Castellani Davide" >> _Footer.md
+        echo "" >> _Footer.md
+        echo "If you want to contribute you can start with:" >> _Footer.md
+        echo "- [Discussion]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/discussions)" >> _Footer.md
+        echo "- [Issue]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/issues/new)" >> _Footer.md
+    - name: _Header file
+      run: |
+        cd wiki
+        echo "# rest-createstructure" > _Header.md
+        echo "[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$(echo ${GITHUB_REF#refs/heads/})/docs/LICENSE)" >> _Header.md
+        echo "![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat)" >> _Header.md
+        echo "![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-all-blue?style=flat) " >> _Header.md
+        echo "" >> _Header.md
+    - name: Recreate README.md
+      run: |
+        cat wiki/_Header.md > repo/docs/README.md
+        cat wiki/Home.md >> repo/docs/README.md
+        cat wiki/Directory-Structure.md >> repo/docs/README.md
+        cat wiki/Database-Structure.md >> repo/docs/README.md
+        cat wiki/REST-Actions.md >> repo/docs/README.md
+        cat wiki/CHANGELOG.md >> repo/docs/README.md
+        cat wiki/Rebuild-the-REST-API-locally.md >> repo/docs/README.md
+        cat wiki/_Footer.md >> repo/docs/README.md
+        sed -i 's/:octocat://g' repo/docs/README.md
+    - name: Recreate database.sql
+      run: |
+        cd repo/db
+        rm -f database.sql
+        echo "--" > database.sql
+        echo "-- Create DB" >> database.sql
+        echo "--" >> database.sql
+        echo "" >> database.sql
+        echo "CREATE DATABASE createstructure;" >> database.sql
+        echo "USE createstructure;" >> database.sql
+        echo "" >> database.sql
+        cat tables/*.sql >> database.sql
+        cat functions-procedures/*.sql >> database.sql
+    - name: git add & commit & upload wiki
+      continue-on-error: true
+      run: |
+        cd wiki
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "help@castellanidavide.it"
+        git add *
+        git commit -m "Upgrade by automatic action"
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git
+    - name: git add & commit & upload repo
+      continue-on-error: true
+      run: |
+        cd repo
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "help@castellanidavide.it"
+        git add *
+        git commit -m "Upgrade by automatic action"
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git
