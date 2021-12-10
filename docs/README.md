@@ -7,7 +7,7 @@
 This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
-![createstructure/rest-createstructure](https://opengraph.githubassets.com/15ae69a75cc606489515ecb70cfab794a8b32606eaf1c5aa6632f29d19eb234a/createstructure/rest-createstructure)
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/ca88958f998b5c5f87002044ab4a8c59049823160c3cbb5b2e1b23722bec24be/createstructure/rest-createstructure)
 ##  Directory structure 
 
 ```
@@ -116,6 +116,7 @@ Repo containing the public part of the REST/API
     - [Automate documentation creation](https://github.com/createstructure/rest-createstructure/issues/14)
     - [Create a short documentation for each folder / file explaining its functionality](https://github.com/createstructure/rest-createstructure/issues/15)
   - [Create a guide to recreate the REST / API locally](https://github.com/createstructure/rest-createstructure/issues/16)
+
 ### [09.01.04] - 2021-07-10
 #### Changed
 - Now usernames can have "-" inside 
