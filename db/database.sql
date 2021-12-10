@@ -649,8 +649,13 @@ BEGIN
 	INTO `repo_log` (`repoID`, `serverID`, `statusID`)
 	VALUES
 	(
-		repoID,
-		serverID,
+		repoID, 
+		(
+			SELECT server_list2.ID 
+			FROM `server_list` AS server_list2
+			WHERE server_list2.name = server_name 
+			LIMIT 1
+		),
 		(
 			SELECT repo_status2.ID 
 			FROM `repo_status` AS repo_status2
