@@ -30,6 +30,7 @@ Repo containing the public part of the REST/API
     - [Automate documentation creation](https://github.com/createstructure/rest-createstructure/issues/14)
     - [Create a short documentation for each folder / file explaining its functionality](https://github.com/createstructure/rest-createstructure/issues/15)
   - [Create a guide to recreate the REST / API locally](https://github.com/createstructure/rest-createstructure/issues/16)
+
 ## [09.01.04] - 2021-07-10
 ### Changed
 - Now usernames can have "-" inside 
