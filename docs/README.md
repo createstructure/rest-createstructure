@@ -1,12 +1,17 @@
-## :octocat: Description :octocat:
+# rest-createstructure
+[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)](https://github.com/createstructure/rest-createstructure/blob/v10-beta/docs/LICENSE)
+![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat)
+![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-all-blue?style=flat) 
+
+##  Description 
 This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
 ![createstructure/rest-createstructure](https://opengraph.githubassets.com/cad05156c359e8665206bdb005420539bb843cba414c759a62ce06acf3376749/createstructure/rest-createstructure)
-## :octocat: Directory structure :octocat:
+##  Directory structure 
 
 ```
-$GITHUB_REPOSITORY
+
 ├── bin # PHP source code
 │   ├── config # configuration file where to store passwords, tokens, ...
 │   │   ├── database.php
@@ -63,10 +68,10 @@ $GITHUB_REPOSITORY
 
 7 directories, 46 files
 ```
-## :octocat: Database structure (ERD) :octocat:
+##  Database structure (ERD) 
 
 ![ERD](https://raw.githubusercontent.com/createstructure/rest-createstructure/v10-beta/docs/ERD.svg)
-## :octocat: REST API actions :octocat:
+##  REST API actions 
 | name | type | action | request | URL | response | notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | Welcome | POST | Returns a random welcome message | {"request": "welcome"} | / | {"code": <code>, "message": <random_welcome_message>} | Basic request |
@@ -79,10 +84,10 @@ $GITHUB_REPOSITORY
 | Set a new server priority (server-side) | POST | functionality | {"request": "server_set_priority", "username": <GitHub_username>, "token": <Github_token>, "server_name": <server_name>, "server_priority": <server_priority>} | / | {"code": <code>, "message": <response_message>} | Ask to do some commands to a server without ssh |
 | Get a priority if there was one (server-side) | POST | functionality | {"request": "server_get_priority", "server_name": <server_name>, "server_password": <server_password>} | / | {"code": <code>, "message": <response_message> [, "priority_instruction": <priority_instruction>, "priorityID": <priorityID>]} | Usefull for the server to get the priority |
 | Set a repo job as done (server-side) | POST | functionality | {"request": "server_set_priority_done", "server_name": <server_name>, "server_password": <server_password>, "priorityID": <priorityID>} | / | {"code": <code>, "message": <response_message>} | Usefull to set priority as done |
-## :octocat: Changelog :octocat:
+##  Changelog 
 Repo containing the public part of the REST/API
 
-- [:octocat: Changelog :octocat:](#changelog)
+- [ Changelog ](#changelog)
   - [[09.01.04] - 2021-07-10](#090104---2021-07-10)
     - [Changed](#changed)
   - [[09.01.03] - 2021-07-08](#090103---2021-07-08)
@@ -108,7 +113,7 @@ Repo containing the public part of the REST/API
 ### [09.01.01] - 2021-06-19
 #### Added
 - Initial version for this repo
-## :octocat: Rebuild the REST API locally :octocat:
+##  Rebuild the REST API locally 
 Install the REST API locally permits you to do some debug and try new configurations.
 
 > ATTENTION
