@@ -290,10 +290,10 @@ DELIMITER ;--
 DELIMITER $$
 CREATE FUNCTION `CreateUpdateRemoveClient`(`github_username` VARCHAR(39), `accountID` INT) RETURNS int(11)
 BEGIN
-	INSERT IGNORE INTO `Sql1437734_5`.`client`(`github_username`)
+	INSERT IGNORE INTO `client`(`github_username`)
 	VALUES (github_username);
 	
-	INSERT INTO `Sql1437734_5`.`client_account`(`clientID`, `accountID`)
+	INSERT INTO `client_account`(`clientID`, `accountID`)
 	VALUES (github_username, accountID);
 	
 	RETURN 200;
@@ -317,21 +317,21 @@ BEGIN
 		'max_m', client_accounts_type.max_m,
 		'remaining_day', client_accounts_type.max_day - (
 			SELECT COUNT(repo_declaration.ID)
-			FROM `Sql1437734_5`.`repo_declaration` AS repo_declaration
+			FROM `repo_declaration` AS repo_declaration
 			WHERE
 				repo_declaration.clientID = github_username AND
 				repo_declaration.timestamp >= (date_sub(now(), interval 1 day))
 			),
 		'remaining_h', client_accounts_type.max_h  - (
 			SELECT COUNT(repo_declaration.ID)
-			FROM `Sql1437734_5`.`repo_declaration` AS repo_declaration
+			FROM `repo_declaration` AS repo_declaration
 			WHERE
 				repo_declaration.clientID = github_username AND
 				repo_declaration.timestamp >= (date_sub(now(), interval 1 hour))
 			),
 		'remaining_m', client_accounts_type.max_m  - (
 			SELECT COUNT(repo_declaration.ID)
-			FROM `Sql1437734_5`.`repo_declaration` AS repo_declaration
+			FROM `repo_declaration` AS repo_declaration
 			WHERE
 				repo_declaration.clientID = github_username AND
 				repo_declaration.timestamp >= (date_sub(now(), interval 1 minute))
@@ -343,11 +343,11 @@ BEGIN
 	FROM 
 		(
 			(
-				`Sql1437734_5`.`client` AS client
-				INNER JOIN `Sql1437734_5`.`client_account` AS client_account 
+				`client` AS client
+				INNER JOIN `client_account` AS client_account 
 				ON client.github_username = client_account.clientID
 			)
-			INNER JOIN `Sql1437734_5`.`client_accounts_type` AS client_accounts_type 
+			INNER JOIN `client_accounts_type` AS client_accounts_type 
 			ON client_account.accountID = client_accounts_type.ID
 		)
 	WHERE client.github_username = github_username
