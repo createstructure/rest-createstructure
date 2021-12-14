@@ -20,7 +20,7 @@ CREATE TABLE `client` (
 --
 
 CREATE TABLE `client_account` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `clientID` varchar(39) NOT NULL COMMENT 'Client ID',
   `accountID` int(11) NOT NULL COMMENT 'Account ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
@@ -57,7 +57,7 @@ INSERT INTO `client_accounts_type` (`ID`, `active`, `super`, `max_day`, `max_h`,
 --
 
 CREATE TABLE `repo_declaration` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `clientID` varchar(39) NOT NULL COMMENT 'Client ID',
   `data` text NOT NULL COMMENT 'All information for the creation of the repository',
   `description` text DEFAULT NULL COMMENT 'An optional description',
@@ -70,7 +70,7 @@ CREATE TABLE `repo_declaration` (
 --
 
 CREATE TABLE `repo_log` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `repoID` int(11) NOT NULL COMMENT 'Repository ID',
   `serverID` int(11) DEFAULT NULL COMMENT 'ID of the server taking charge of the operation',
   `statusID` int(11) NOT NULL COMMENT 'Status ID',
@@ -114,7 +114,7 @@ CREATE TABLE `server_list` (
 --
 
 CREATE TABLE `server_priority_declaration` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `serverID` int(11) NOT NULL COMMENT 'Server ID',
   `clientID` varchar(39) NOT NULL COMMENT 'ID of who made the request',
   `instructionID` int(11) NOT NULL COMMENT 'Instruction ID',
@@ -149,7 +149,7 @@ INSERT INTO `server_priority_instructions` (`name`, `description`) VALUES
 --
 
 CREATE TABLE `server_priority_log` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `priorityID` int(11) NOT NULL COMMENT 'Priority ID',
   `statusID` int(11) NOT NULL COMMENT 'Status ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
@@ -180,7 +180,7 @@ INSERT INTO `server_priority_status` (`description`) VALUES
 --
 
 CREATE TABLE `server_secrets` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) AUTO_INCREMENT NOT NULL COMMENT 'Table ID',
   `serverID` int(11) NOT NULL COMMENT 'Server ID',
   `server_password` text NOT NULL COMMENT 'Server password',
   `server_public_key` text NOT NULL COMMENT 'Server public key',
