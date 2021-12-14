@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `repo_log` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `repoID` int(11) NOT NULL COMMENT 'Repository ID',
   `serverID` int(11) DEFAULT NULL COMMENT 'ID of the server taking charge of the operation',
   `statusID` int(11) NOT NULL COMMENT 'Status ID',

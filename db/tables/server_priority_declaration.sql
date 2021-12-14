@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `server_priority_declaration` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `serverID` int(11) NOT NULL COMMENT 'Server ID',
   `clientID` varchar(39) NOT NULL COMMENT 'ID of who made the request',
   `instructionID` int(11) NOT NULL COMMENT 'Instruction ID',

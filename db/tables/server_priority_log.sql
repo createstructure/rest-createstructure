@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `server_priority_log` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `priorityID` int(11) NOT NULL COMMENT 'Priority ID',
   `statusID` int(11) NOT NULL COMMENT 'Status ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',

@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE `client_account` (
-  `ID` int(11) NOT NULL COMMENT 'Table ID',
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Table ID',
   `clientID` varchar(39) NOT NULL COMMENT 'Client ID',
   `accountID` int(11) NOT NULL COMMENT 'Account ID',
   `description` text DEFAULT NULL COMMENT 'An optional description',
