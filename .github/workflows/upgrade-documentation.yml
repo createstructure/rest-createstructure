@@ -15,12 +15,12 @@ jobs:
       run: |
         sudo apt update -y
         sudo pip install BeautifulSoup4
-        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
         {
           git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.wiki.git wiki
         } || {
           mkdir wiki
         }
+        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git repo
         rm -f wiki/*.md
     - name: Home file
       run: |
