@@ -7,7 +7,7 @@
 This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
-![createstructure/rest-createstructure](https://opengraph.githubassets.com/7d0ce60eb0958804b81ad4ba3f59975e5895a9d7690604aef69c81c91b6253c8/createstructure/rest-createstructure)
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/5f19a54e539fc8c74e4ec545a1a2e24b07f033926221341cb306a7e7600917d5/createstructure/rest-createstructure)
 ##  Directory structure 
 
 ```
