@@ -7,7 +7,7 @@
 This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
-![createstructure/rest-createstructure](https://opengraph.githubassets.com/9f9e689f5aac4036b4c3557c6e7b395e59005ee0cd3827bd2d34226743eb98fa/createstructure/rest-createstructure)
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/7d0ce60eb0958804b81ad4ba3f59975e5895a9d7690604aef69c81c91b6253c8/createstructure/rest-createstructure)
 ##  Directory structure 
 
 ```
@@ -37,7 +37,6 @@ To get more info about how it works and how can you can contribute, please go to
 │   ├── functions-procedures # folder containing all the needed functions and procedures
 │   │   ├── CreateRepo.sql
 │   │   ├── CreateServer.sql
-│   │   ├── CreateServerPriority.sql
 │   │   ├── CreateUpdateRemoveClient.sql
 │   │   ├── GetClient.sql
 │   │   ├── ServerGetJobInfo.sql
@@ -66,7 +65,7 @@ To get more info about how it works and how can you can contribute, please go to
     ├── LICENSE
     └── README.md
 
-7 directories, 46 files
+7 directories, 45 files
 ```
 ##  Database structure (ERD) 
 
@@ -88,6 +87,7 @@ To get more info about how it works and how can you can contribute, please go to
 Repo containing the public part of the REST/API
 
 - [ Changelog ](#changelog)
+  - [[10.01.02] - 2021-12-19](#100102---2021-12-19)
   - [[10.01.01] - 2021-12-10](#100101---2021-12-10)
   - [[09.01.04] - 2021-07-10](#090104---2021-07-10)
     - [Changed](#changed)
@@ -98,6 +98,9 @@ Repo containing the public part of the REST/API
   - [[09.01.01] - 2021-06-19](#090101---2021-06-19)
     - [Added](#added)
 
+### [10.01.02] - 2021-12-19
+- [Possible problem with multithreads](https://github.com/createstructure/rest-createstructure/issues/19)
+- [Add export of db script](https://github.com/createstructure/rest-createstructure/issues/20)
 
 ### [10.01.01] - 2021-12-10
 - [v10-beta (rest-createstructure)](https://github.com/createstructure/rest-createstructure/issues/2)

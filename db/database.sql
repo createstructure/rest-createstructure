@@ -196,25 +196,32 @@ CREATE TABLE `server_secrets` (
 DELIMITER $$
 CREATE FUNCTION `CreateRepo`(`clientID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
 BEGIN
-	DECLARE consumer TEXT DEFAULT GetClient(clientID); 
+	IF (GET_LOCK(CONCAT("CreateRepo", clientID), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+    
+	SELECT GetClient(clientID)
+    INTO @consumer;
+    
 	IF
 	(
 		SELECT json_extract(
-			consumer,
+			@consumer,
 			'$.remaining_day'
 		)
 	) > 0
 	AND
 	(
 		SELECT json_extract(
-			consumer,
+			@consumer,
 			'$.remaining_h'
 		)
 	) > 0
 	AND
 	(
 		SELECT json_extract(
-			consumer,
+			@consumer,
 			'$.remaining_m'
 		)
 	) > 0
@@ -244,6 +251,11 @@ DELIMITER ;--
 DELIMITER $$
 CREATE PROCEDURE `CreateServer`(IN `name` TEXT, IN `description` TEXT, IN `server_password` TEXT, IN `server_public_key` TEXT)
 BEGIN
+	IF (GET_LOCK("CreateServer", 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+
 	INSERT INTO `server_list`(`name`, `description`)
 	VALUES (name, description);
 	
@@ -255,41 +267,17 @@ BEGIN
 		);
 END$$
 DELIMITER ;--
--- Connected with server_set_priority.php
---
-
-DELIMITER $$
-CREATE PROCEDURE `CreateServerPriority`(IN `clientID` VARCHAR(39), IN `instruction` TEXT, IN `serverID` INT)
-BEGIN
-	INSERT INTO `server_priority_declaration`(`clientID`, `instructionID`, `serverID`)
-	VALUES (
-		clientID, 
-		(
-			SELECT server_priority_instructions.ID
-			FROM `server_priority_instructions` AS server_priority_instructions
-			WHERE server_priority_instructions.name = instruction
-		),
-		serverID
-	);
-	
-	INSERT INTO `server_priority_log`(`priorityID`, `statusID`)
-	VALUES (
-		LAST_INSERT_ID(), 
-		(
-			SELECT server_priority_status.ID
-			FROM `server_priority_status` AS server_priority_status
-			WHERE server_priority_status.description = "To do"
-			LIMIT 1
-		)
-	);
-END$$
-DELIMITER ;--
 -- Connected with webhook.php
 --
 
 DELIMITER $$
 CREATE FUNCTION `CreateUpdateRemoveClient`(`github_username` VARCHAR(39), `accountID` INT) RETURNS int(11)
 BEGIN
+	IF (GET_LOCK(CONCAT("CreateUpdateRemoveClient", github_username), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+
 	INSERT IGNORE INTO `client`(`github_username`)
 	VALUES (github_username);
 	
@@ -306,6 +294,10 @@ DELIMITER $$
 CREATE FUNCTION `GetClient`(`github_username` VARCHAR(39)) RETURNS text CHARSET latin1
 	DETERMINISTIC
 BEGIN
+	IF (GET_LOCK(CONCAT("GetClient", github_username), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
 	
 	SELECT JSON_OBJECT(
 		'client', client.github_username,
@@ -519,6 +511,11 @@ DELIMITER ;--
 DELIMITER $$
 CREATE FUNCTION `ServerReserveJob`(`server_name` TEXT, `server_password` TEXT) RETURNS int(11)
 BEGIN
+	IF (GET_LOCK("ServerReserveJob", 60) = 0)
+    THEN
+		RETURN -3;
+	END IF;
+
 	IF 
 	(
 		(
@@ -673,6 +670,11 @@ DELIMITER ;--
 DELIMITER $$
 CREATE FUNCTION `ServerSetPriority`(`clientID` VARCHAR(39), `server_name` TEXT, `priority_instruction` TEXT) RETURNS int(11)
 BEGIN
+	IF (GET_LOCK(CONCAT("ServerSetPriority", server_name), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+
 	IF
 	(
 		(
