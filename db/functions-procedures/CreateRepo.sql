@@ -5,25 +5,32 @@
 DELIMITER $$
 CREATE FUNCTION `CreateRepo`(`clientID` VARCHAR(39), `payload` TEXT) RETURNS int(11)
 BEGIN
-	DECLARE consumer TEXT DEFAULT GetClient(clientID); 
+	IF (GET_LOCK(CONCAT("CreateRepo", clientID), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+    
+	SELECT GetClient(clientID)
+    INTO @consumer;
+    
 	IF
 	(
 		SELECT json_extract(
-			consumer,
+			@consumer,
 			'$.remaining_day'
 		)
 	) > 0
 	AND
 	(
 		SELECT json_extract(
-			consumer,
+			@consumer,
 			'$.remaining_h'
 		)
 	) > 0
 	AND
 	(
 		SELECT json_extract(
-			consumer,
+			@consumer,
 			'$.remaining_m'
 		)
 	) > 0

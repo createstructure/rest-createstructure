@@ -57,6 +57,12 @@
 						"code" => 200,
 						"message" => "Priority creation made with success"
 					);
+				case "504":
+				case 504:
+					return array(
+						"code" => 504,
+						"message" => "There is a problem, the DB seems to be full of work, please try again later"
+					);
 				case "401":
 				case 401:
 				default:

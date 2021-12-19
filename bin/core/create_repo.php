@@ -55,6 +55,12 @@
 						"code" => 200,
 						"message" => "Repo creation saved with success"
 					);
+				case "504":
+				case 504:
+					return array(
+						"code" => 504,
+						"message" => "There is a problem, the DB seems to be full of work, please try again later"
+					);
 				case "429":
 				case 429:
 				default:
@@ -62,7 +68,6 @@
 						"code" => 429,
 						"message" => "You seem to have created more repo than your actual subscription. To change subscription: https://github.com/marketplace/createstructure"
 					);
-
 			}
 
 		}

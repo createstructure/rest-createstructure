@@ -5,6 +5,11 @@
 DELIMITER $$
 CREATE FUNCTION `ServerReserveJob`(`server_name` TEXT, `server_password` TEXT) RETURNS int(11)
 BEGIN
+	IF (GET_LOCK("ServerReserveJob", 60) = 0)
+    THEN
+		RETURN -3;
+	END IF;
+
 	IF 
 	(
 		(

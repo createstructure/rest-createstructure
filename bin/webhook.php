@@ -153,12 +153,30 @@
 				)
 			);
 
-	echo json_encode(
-		array(
-			"status" => 200,
-			"message" => "Login made with success"
-		)
-	);
+	$response = array();
+
+	switch ($this->status_code) {
+		case "200":
+		case 200:
+			$response = array(
+				"code" => 200,
+				"message" => "Priority creation made with success"
+			);
+		case "504":
+		case 504:
+			$response = array(
+				"code" => 504,
+				"message" => "There is a problem, the DB seems to be full of work, please try again later"
+			);
+		default:
+			$response = array(
+				"code" => 400,
+				"message" => "Generic error"
+			);
+
+	}
+
+	echo json_encode($response);
 
 	$conn->close_connection();
 ?>

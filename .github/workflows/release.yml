@@ -20,3 +20,17 @@ jobs:
         ncftpput -aR -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.API_URL }} bin/core
         ncftpput -a -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.API_URL }} bin/index.php
         ncftpput -a -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} ${{ secrets.SERVER }} ${{ secrets.API_URL }} bin/webhook.php
+    - name: Set envirorment varible(s)
+      run: |
+        echo "::set-output name=PUSH_PATH::$(curl -sL https://api.github.com/repos/createstructure/rest-createstructure/releases/latest | jq -r '.upload_url')"
+        echo "::set-output name=DB::db/database.sql"
+      id: envirorment-variables
+    - name: Upload database sql
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.envirorment-variables.outputs.PUSH_PATH }}
+        asset_path: ${{ steps.envirorment-variables.outputs.DB }}
+        asset_name: database.sql
+        asset_content_type: application/zip

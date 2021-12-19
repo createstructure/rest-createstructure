@@ -61,7 +61,6 @@
 						"code" => 401,
 						"message" => "Wrong credentials"
 					);
-
 				default:
 					return array(
 						"code" => 200,

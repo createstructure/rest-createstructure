@@ -5,6 +5,11 @@
 DELIMITER $$
 CREATE FUNCTION `ServerSetPriority`(`clientID` VARCHAR(39), `server_name` TEXT, `priority_instruction` TEXT) RETURNS int(11)
 BEGIN
+	IF (GET_LOCK(CONCAT("ServerSetPriority", server_name), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+
 	IF
 	(
 		(

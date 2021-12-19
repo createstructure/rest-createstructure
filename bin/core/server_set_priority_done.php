@@ -59,7 +59,12 @@
 						"code" => 409,
 						"message" => "Priority already setted as done"
 					);
-
+				case "504":
+				case 504:
+					return array(
+						"code" => 504,
+						"message" => "There is a problem, the DB seems to be full of work, please try again later"
+					);
 				case 200:
 					return array(
 						"code" => 200,

@@ -6,6 +6,10 @@ DELIMITER $$
 CREATE FUNCTION `GetClient`(`github_username` VARCHAR(39)) RETURNS text CHARSET latin1
 	DETERMINISTIC
 BEGIN
+	IF (GET_LOCK(CONCAT("GetClient", github_username), 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
 	
 	SELECT JSON_OBJECT(
 		'client', client.github_username,

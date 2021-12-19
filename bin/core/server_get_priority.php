@@ -59,7 +59,6 @@
 						"code" => 201,
 						"message" => "No new priority"
 					);
-
 				default:
 					$priority = json_decode($this->response, true);
 					return array(

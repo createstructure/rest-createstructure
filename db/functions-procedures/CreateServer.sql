@@ -5,6 +5,11 @@
 DELIMITER $$
 CREATE PROCEDURE `CreateServer`(IN `name` TEXT, IN `description` TEXT, IN `server_password` TEXT, IN `server_public_key` TEXT)
 BEGIN
+	IF (GET_LOCK("CreateServer", 60) = 0)
+    THEN
+		RETURN 504;
+	END IF;
+
 	INSERT INTO `server_list`(`name`, `description`)
 	VALUES (name, description);
 	

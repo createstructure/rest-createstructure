@@ -57,7 +57,12 @@
 						"code" => 204,
 						"message" => "No new repo to create"
 					);
-
+				case -3:
+				case "-3":
+					return array(
+						"code" => 504,
+						"message" => "There is a problem, the DB seems to be full of work, please try again later"
+					);
 				default:
 					return array(
 						"code" => 200,
