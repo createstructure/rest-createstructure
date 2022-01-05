@@ -7,7 +7,7 @@
 This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
-![createstructure/rest-createstructure](https://opengraph.githubassets.com/5f19a54e539fc8c74e4ec545a1a2e24b07f033926221341cb306a7e7600917d5/createstructure/rest-createstructure)
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/2dca08a12f82905c32a6cc1f6e5870e24eb6edd6d5d3b4f2e2796c769689d9b4/createstructure/rest-createstructure)
 ##  Directory structure 
 
 ```
@@ -87,6 +87,7 @@ To get more info about how it works and how can you can contribute, please go to
 Repo containing the public part of the REST/API
 
 - [ Changelog ](#changelog)
+  - [[10.01.03] - 2022-01-05](#100103---2022-01-05)
   - [[10.01.02] - 2021-12-19](#100102---2021-12-19)
   - [[10.01.01] - 2021-12-10](#100101---2021-12-10)
   - [[09.01.04] - 2021-07-10](#090104---2021-07-10)
@@ -97,6 +98,9 @@ Repo containing the public part of the REST/API
     - [Changed](#changed-2)
   - [[09.01.01] - 2021-06-19](#090101---2021-06-19)
     - [Added](#added)
+
+### [10.01.03] - 2022-01-05
+- [Add sponsorship button](https://github.com/createstructure/createstructure.github.io/issues/36)
 
 ### [10.01.02] - 2021-12-19
 - [Possible problem with multithreads](https://github.com/createstructure/rest-createstructure/issues/19)
