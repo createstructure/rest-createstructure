@@ -2,6 +2,7 @@
 Repo containing the public part of the REST/API
 
 - [Changelog](#changelog)
+  - [[10.01.03] - 2022-01-05](#100103---2022-01-05)
   - [[10.01.02] - 2021-12-19](#100102---2021-12-19)
   - [[10.01.01] - 2021-12-10](#100101---2021-12-10)
   - [[09.01.04] - 2021-07-10](#090104---2021-07-10)
@@ -12,6 +13,9 @@ Repo containing the public part of the REST/API
     - [Changed](#changed-2)
   - [[09.01.01] - 2021-06-19](#090101---2021-06-19)
     - [Added](#added)
+
+## [10.01.03] - 2022-01-05
+- [Add sponsorship button](https://github.com/createstructure/createstructure.github.io/issues/36)
 
 ## [10.01.02] - 2021-12-19
 - [Possible problem with multithreads](https://github.com/createstructure/rest-createstructure/issues/19)
