@@ -6,7 +6,27 @@ on:
       - 'releases/*'
 
 jobs:
+  UML-export:
+    runs-on: ubuntu-latest
+    environment:
+      name: UML
+    steps:
+    - uses: actions/checkout@v2
+    - name: Export UML    
+      uses: docker://rlespinasse/drawio-export:latest
+      with:
+        args: -f svg -o ./ docs
+    - name: git add & commit & upload repo
+      continue-on-error: true
+      run: |
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "help@castellanidavide.it"
+        git add *
+        git commit -m "Exported UML automatically"
+        git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -f
+
   upgrade-documentation:
+    needs: [UML-export]
     runs-on: ubuntu-latest
     environment:
       name: documentation
@@ -20,7 +40,7 @@ jobs:
         } || {
           mkdir wiki
         }
-        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git repo
+        git clone --recurse-submodules --depth 1 https://$.GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -b $(echo ${GITHUB_REF#refs/heads/}) repo
         rm -f wiki/*.md
     - name: Home file
       run: |
@@ -84,6 +104,11 @@ jobs:
         if __name__ == "__main__":
           open("REST-Actions.md", "w+").write(str(get_content()))                    
         EOF
+    - name: Class UML file
+      run: |
+        cd wiki
+        echo "## :octocat: Class UML :octocat:" > Class-UML.md
+        echo "![Class UML](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/${{ github.event.repository.name }}-Class-UML.svg)" >> Class-UML.md
     - name: CHANGELOG file
       run: |
         cp repo/docs/CHANGELOG.md wiki/
@@ -93,9 +118,9 @@ jobs:
     - name: database-structure file
       run: |
         cd wiki
-        echo "## :octocat: Database structure (ERD) :octocat:" > Database-Structure.md
+        echo "## :octocat: Database structure (ER) :octocat:" > Database-Structure.md
         echo "" >> Database-Structure.md
-        echo "![ERD](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/ERD.svg)" >> Database-Structure.md
+        echo "![ER](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/${{ github.event.repository.name }}-ER.svg)" >> Database-Structure.md
     - name: Directory structure file
       run: |
         cd wiki
@@ -237,6 +262,7 @@ jobs:
       run: |
         cat wiki/_Header.md > repo/docs/README.md
         cat wiki/Home.md >> repo/docs/README.md
+        cat wiki/Class-UML.md >> repo/docs/README.md
         cat wiki/Directory-Structure.md >> repo/docs/README.md
         cat wiki/Database-Structure.md >> repo/docs/README.md
         cat wiki/REST-Actions.md >> repo/docs/README.md
