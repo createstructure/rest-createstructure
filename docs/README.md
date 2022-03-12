@@ -69,7 +69,7 @@ To get more info about how it works and how can you can contribute, please go to
 
 7 directories, 45 files
 ```
-##  Database structure (ERD) 
+##  Database structure (ER) 
 
 ![ER](https://raw.githubusercontent.com/createstructure/rest-createstructure/UML-beta/docs/rest-createstructure-ER.svg)
 ##  REST API actions 
