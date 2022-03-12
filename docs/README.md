@@ -71,7 +71,7 @@ To get more info about how it works and how can you can contribute, please go to
 ```
 ##  Database structure (ERD) 
 
-![ERD](https://raw.githubusercontent.com/createstructure/rest-createstructure/UML-beta/docs/ERD.svg)
+![ER](https://raw.githubusercontent.com/createstructure/rest-createstructure/UML-beta/docs/rest-createstructure-ER.svg)
 ##  REST API actions 
 | name | type | action | request | URL | response | notes |
 | --- | --- | --- | --- | --- | --- | --- |
