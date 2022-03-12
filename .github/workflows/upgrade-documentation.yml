@@ -118,7 +118,7 @@ jobs:
     - name: database-structure file
       run: |
         cd wiki
-        echo "## :octocat: Database structure (ERD) :octocat:" > Database-Structure.md
+        echo "## :octocat: Database structure (ER) :octocat:" > Database-Structure.md
         echo "" >> Database-Structure.md
         echo "![ER](https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(echo ${GITHUB_REF#refs/heads/})/docs/${{ github.event.repository.name }}-ER.svg)" >> Database-Structure.md
     - name: Directory structure file
