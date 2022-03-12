@@ -8,6 +8,8 @@ This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
 ![createstructure/rest-createstructure](https://opengraph.githubassets.com/375f595d3af5127754130ce33a0950c5da4e3cdd278c6e6c393c8c403beac8e5/createstructure/rest-createstructure)
+##  Class UML 
+![Class UML](https://raw.githubusercontent.com/createstructure/rest-createstructure/UML-beta/docs/rest-createstructure-Class-UML.svg)
 ##  Directory structure 
 
 ```
