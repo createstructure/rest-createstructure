@@ -1,5 +1,5 @@
 # rest-createstructure
-[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)](https://github.com/createstructure/rest-createstructure/blob/UML-beta/docs/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)](https://github.com/createstructure/rest-createstructure/blob/main/docs/LICENSE)
 ![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat)
 ![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-all-blue?style=flat) 
 
@@ -9,7 +9,7 @@ This repository contains the REST API created for the createstructure service.
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
 ![createstructure/rest-createstructure](https://opengraph.githubassets.com/375f595d3af5127754130ce33a0950c5da4e3cdd278c6e6c393c8c403beac8e5/createstructure/rest-createstructure)
 ##  Class UML 
-![Class UML](https://raw.githubusercontent.com/createstructure/rest-createstructure/UML-beta/docs/rest-createstructure-Class-UML.svg)
+![Class UML](https://raw.githubusercontent.com/createstructure/rest-createstructure/main/docs/rest-createstructure-Class-UML.svg)
 ##  Directory structure 
 
 ```
@@ -73,7 +73,7 @@ To get more info about how it works and how can you can contribute, please go to
 ```
 ##  Database structure (ER) 
 
-![ER](https://raw.githubusercontent.com/createstructure/rest-createstructure/UML-beta/docs/rest-createstructure-ER.svg)
+![ER](https://raw.githubusercontent.com/createstructure/rest-createstructure/main/docs/rest-createstructure-ER.svg)
 ##  REST API actions 
 | name | type | action | request | URL | response | notes |
 | --- | --- | --- | --- | --- | --- | --- |
