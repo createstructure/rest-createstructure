@@ -1,6 +1,6 @@
 <?php
 /**
- * Get priority action (server)
+ * Create Server action (server)
  *
  * PHP version 7.4.16
  *
@@ -14,7 +14,7 @@
 include_once "config/database.php";
 include_once "action.php";
 
-class ServerSetPriority implements Action
+class CreateServer implements Action
 {
 	// class variabile(s)
 	private $payload;
@@ -22,7 +22,9 @@ class ServerSetPriority implements Action
 	private $username;
 	private $token;
 	private $serverName;
-	private $serverPriority;
+	private $serverPassword;
+	private $serverDescription;
+	private $serverPublicKey;
 	private $statusCode;
 
 	/**
@@ -36,7 +38,9 @@ class ServerSetPriority implements Action
 		$this->username = $payload["username"];
 		$this->token = $payload["token"];
 		$this->serverName = $payload["server_name"];
-		$this->serverPriority = $payload["server_priority"];
+		$this->serverPassword = $payload["server_password"];
+		$this->serverDescription = $payload["server_description"];
+		$this->serverPublicKey = $payload["server_public_key"];
 	}
 
 	/**
@@ -49,7 +53,7 @@ class ServerSetPriority implements Action
 		$this->conn = new Database();
 
 		$this->checkGitHub();
-		$this->createPriority();
+		$this->createServerCore();
 
 		$this->conn->closeConnection();
 
@@ -59,7 +63,7 @@ class ServerSetPriority implements Action
 			case 200:
 				$res = array(
 					"code" => 200,
-					"message" => "Priority creation made with success"
+					"message" => "Server creation made with success"
 				);
 				break;
 			case "504":
@@ -111,21 +115,23 @@ class ServerSetPriority implements Action
 	}
 
 	/**
-	 * Create the priority
+	 * Create the server
 	 */
-	private function createPriority()
+	private function createServerCore()
 	{
 		// Get user id
-		$query = "SELECT ServerSetPriority(?, ?, ?) AS statusCode;"; // statusCode is the output of the CreateRepo function
+		$query = "SELECT CreateServer(?, ?, ?, ?, ?) AS statusCode;"; // statusCode is the output of the CreateServer function
 
 		// prepare and execute query
 		$stmt = $this->conn->getConnection()->stmt_init();
 		$stmt->prepare($query);
 		$stmt->bind_param(
-						"sss",
+						"sssss",
 						$this->username,
 						$this->serverName,
-						$this->serverPriority
+						$this->serverDescription,
+						$this->serverPassword,
+						$this->serverPublicKey
 					);
 		$stmt->execute();
 		$result = $stmt->get_result();

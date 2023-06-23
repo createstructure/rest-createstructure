@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="25 -5 996 1025" width="971px" height="1030px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="529" y1="110" x2="539" y2="110" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="820" y1="40" x2="830" y2="40" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="539" y1="110" x2="820" y2="40" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="536.5" y1="110" x2="532.96446609407" y2="113.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="536.5" y1="110" x2="532.96446609407" y2="106.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="825" y1="40" x2="821.46446609407" y2="43.535533905933" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="825" y1="40" x2="821.46446609407" y2="36.464466094067" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="420" y1="90" x2="410" y2="90" style="stroke:#333;stroke-width:1;"/>
+   <line x1="190" y1="90" x2="180" y2="90" style="stroke:#333;stroke-width:1;"/>
+   <line x1="410" y1="90" x2="190" y2="90" style="stroke:#333;stroke-width:1;"/>
+   <line x1="412.5" y1="90" x2="416.03553390593" y2="93.535533905933" style="stroke:#333;stroke-width:2;"/>
+   <line x1="412.5" y1="90" x2="416.03553390593" y2="86.464466094067" style="stroke:#333;stroke-width:2;"/>
+   <line x1="185" y1="90" x2="188.53553390593" y2="93.535533905933" style="stroke:#333;stroke-width:2;"/>
+   <line x1="185" y1="90" x2="188.53553390593" y2="86.464466094067" style="stroke:#333;stroke-width:2;"/>
+   <line x1="50" y1="310" x2="40" y2="310" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="40" y1="90" x2="50" y2="90" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="40" y1="310" x2="40" y2="90" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="42.5" y1="310" x2="46.035533905933" y2="313.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="42.5" y1="310" x2="46.035533905933" y2="306.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="45" y1="90" x2="41.464466094067" y2="93.535533905933" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="45" y1="90" x2="41.464466094067" y2="86.464466094067" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="490" y1="320" x2="480" y2="320" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="148" y1="580" x2="138" y2="580" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="480" y1="320" x2="148" y2="580" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="482.5" y1="320" x2="486.03553390593" y2="323.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="482.5" y1="320" x2="486.03553390593" y2="316.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="143" y1="580" x2="146.53553390593" y2="583.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="143" y1="580" x2="146.53553390593" y2="576.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="490" y1="300" x2="480" y2="300" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="183" y1="290" x2="173" y2="290" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="480" y1="300" x2="183" y2="290" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="482.5" y1="300" x2="486.03553390593" y2="303.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="482.5" y1="300" x2="486.03553390593" y2="296.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="178" y1="290" x2="181.53553390593" y2="293.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="178" y1="290" x2="181.53553390593" y2="286.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="578" y1="340" x2="588" y2="340" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="880" y1="320" x2="890" y2="320" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="588" y1="340" x2="880" y2="320" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="585.5" y1="340" x2="581.96446609407" y2="343.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="585.5" y1="340" x2="581.96446609407" y2="336.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="885" y1="320" x2="881.46446609407" y2="323.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="885" y1="320" x2="881.46446609407" y2="316.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="40" y1="870" x2="30" y2="870" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="40" y1="580" x2="50" y2="580" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="30" y1="870" x2="40" y2="580" style="stroke:#bbb;stroke-width:1;"/>
+   <line x1="32.5" y1="870" x2="36.035533905933" y2="873.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="32.5" y1="870" x2="36.035533905933" y2="866.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="45" y1="580" x2="41.464466094067" y2="583.53553390593" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="45" y1="580" x2="41.464466094067" y2="576.46446609407" style="stroke:#bbb;stroke-width:2;"/>
+   <line x1="40" y1="890" x2="30" y2="890" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="40" y1="90" x2="50" y2="90" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="30" y1="890" x2="40" y2="90" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="32.5" y1="890" x2="36.035533905933" y2="893.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="32.5" y1="890" x2="36.035533905933" y2="886.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="45" y1="90" x2="41.464466094067" y2="93.535533905933" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="45" y1="90" x2="41.464466094067" y2="86.464466094067" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="228" y1="910" x2="238" y2="910" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="430" y1="800" x2="440" y2="800" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="238" y1="910" x2="430" y2="800" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="235.5" y1="910" x2="231.96446609407" y2="913.53553390593" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="235.5" y1="910" x2="231.96446609407" y2="906.46446609407" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="435" y1="800" x2="431.46446609407" y2="803.53553390593" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="435" y1="800" x2="431.46446609407" y2="796.46446609407" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="840" y1="870" x2="830" y2="870" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="238" y1="850" x2="228" y2="850" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="830" y1="870" x2="238" y2="850" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="832.5" y1="870" x2="836.03553390593" y2="873.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="832.5" y1="870" x2="836.03553390593" y2="866.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="233" y1="850" x2="236.53553390593" y2="853.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="233" y1="850" x2="236.53553390593" y2="846.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="840" y1="890" x2="830" y2="890" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="621" y1="960" x2="611" y2="960" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="830" y1="890" x2="621" y2="960" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="832.5" y1="890" x2="836.03553390593" y2="893.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="832.5" y1="890" x2="836.03553390593" y2="886.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="616" y1="960" x2="619.53553390593" y2="963.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="616" y1="960" x2="619.53553390593" y2="956.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="470" y1="580" x2="460" y2="580" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="148" y1="580" x2="138" y2="580" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="460" y1="580" x2="148" y2="580" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="462.5" y1="580" x2="466.03553390593" y2="583.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="462.5" y1="580" x2="466.03553390593" y2="576.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="143" y1="580" x2="146.53553390593" y2="583.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="143" y1="580" x2="146.53553390593" y2="576.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <rect width="130" height="20" x="50" y="60" style="fill:#007;stroke:black;"/>
+   <text width="130" height="20" x="55" y="74" style="fill:#fff;" font-family="Arial" font-size="16px"> client</text>
+   <rect width="130" height="20" x="50" y="80" style="fill:#777;stroke:black;"/>
+   <text width="130" height="20" x="55" y="94" style="fill:black;" font-family="Arial" font-size="16px">github_username</text>
+   <rect width="130" height="20" x="50" y="100" style="fill:#fff;stroke:black;"/>
+   <text width="130" height="20" x="55" y="114" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="130" height="20" x="50" y="120" style="fill:#fff;stroke:black;"/>
+   <text width="130" height="20" x="55" y="134" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="109" height="20" x="420" y="40" style="fill:#007;stroke:black;"/>
+   <text width="109" height="20" x="425" y="54" style="fill:#fff;" font-family="Arial" font-size="16px"> client_account</text>
+   <rect width="109" height="20" x="420" y="60" style="fill:#777;stroke:black;"/>
+   <text width="109" height="20" x="425" y="74" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="109" height="20" x="420" y="80" style="fill:#fff;stroke:black;"/>
+   <text width="109" height="20" x="425" y="94" style="fill:black;" font-family="Arial" font-size="16px">clientID</text>
+   <rect width="109" height="20" x="420" y="100" style="fill:#fff;stroke:black;"/>
+   <text width="109" height="20" x="425" y="114" style="fill:black;" font-family="Arial" font-size="16px">accountID</text>
+   <rect width="109" height="20" x="420" y="120" style="fill:#fff;stroke:black;"/>
+   <text width="109" height="20" x="425" y="134" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="109" height="20" x="420" y="140" style="fill:#fff;stroke:black;"/>
+   <text width="109" height="20" x="425" y="154" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="151" height="20" x="830" y="10" style="fill:#007;stroke:black;"/>
+   <text width="151" height="20" x="835" y="24" style="fill:#fff;" font-family="Arial" font-size="16px"> client_accounts_type</text>
+   <rect width="151" height="20" x="830" y="30" style="fill:#777;stroke:black;"/>
+   <text width="151" height="20" x="835" y="44" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="151" height="20" x="830" y="50" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="64" style="fill:black;" font-family="Arial" font-size="16px">active</text>
+   <rect width="151" height="20" x="830" y="70" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="84" style="fill:black;" font-family="Arial" font-size="16px">super</text>
+   <rect width="151" height="20" x="830" y="90" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="104" style="fill:black;" font-family="Arial" font-size="16px">max_day</text>
+   <rect width="151" height="20" x="830" y="110" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="124" style="fill:black;" font-family="Arial" font-size="16px">max_h</text>
+   <rect width="151" height="20" x="830" y="130" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="144" style="fill:black;" font-family="Arial" font-size="16px">max_m</text>
+   <rect width="151" height="20" x="830" y="150" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="164" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="151" height="20" x="830" y="170" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="835" y="184" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="123" height="20" x="50" y="260" style="fill:#007;stroke:black;"/>
+   <text width="123" height="20" x="55" y="274" style="fill:#fff;" font-family="Arial" font-size="16px"> repo_declaration</text>
+   <rect width="123" height="20" x="50" y="280" style="fill:#777;stroke:black;"/>
+   <text width="123" height="20" x="55" y="294" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="123" height="20" x="50" y="300" style="fill:#fff;stroke:black;"/>
+   <text width="123" height="20" x="55" y="314" style="fill:black;" font-family="Arial" font-size="16px">clientID</text>
+   <rect width="123" height="20" x="50" y="320" style="fill:#fff;stroke:black;"/>
+   <text width="123" height="20" x="55" y="334" style="fill:black;" font-family="Arial" font-size="16px">data</text>
+   <rect width="123" height="20" x="50" y="340" style="fill:#fff;stroke:black;"/>
+   <text width="123" height="20" x="55" y="354" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="123" height="20" x="50" y="360" style="fill:#fff;stroke:black;"/>
+   <text width="123" height="20" x="55" y="374" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="88" height="20" x="490" y="250" style="fill:#007;stroke:black;"/>
+   <text width="88" height="20" x="495" y="264" style="fill:#fff;" font-family="Arial" font-size="16px"> repo_log</text>
+   <rect width="88" height="20" x="490" y="270" style="fill:#777;stroke:black;"/>
+   <text width="88" height="20" x="495" y="284" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="88" height="20" x="490" y="290" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="495" y="304" style="fill:black;" font-family="Arial" font-size="16px">repoID</text>
+   <rect width="88" height="20" x="490" y="310" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="495" y="324" style="fill:black;" font-family="Arial" font-size="16px">serverID</text>
+   <rect width="88" height="20" x="490" y="330" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="495" y="344" style="fill:black;" font-family="Arial" font-size="16px">statusID</text>
+   <rect width="88" height="20" x="490" y="350" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="495" y="364" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="88" height="20" x="490" y="370" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="495" y="384" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="88" height="20" x="890" y="290" style="fill:#007;stroke:black;"/>
+   <text width="88" height="20" x="895" y="304" style="fill:#fff;" font-family="Arial" font-size="16px"> repo_status</text>
+   <rect width="88" height="20" x="890" y="310" style="fill:#777;stroke:black;"/>
+   <text width="88" height="20" x="895" y="324" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="88" height="20" x="890" y="330" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="895" y="344" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="88" height="20" x="890" y="350" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="895" y="364" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="88" height="20" x="50" y="550" style="fill:#007;stroke:black;"/>
+   <text width="88" height="20" x="55" y="564" style="fill:#fff;" font-family="Arial" font-size="16px"> server_list</text>
+   <rect width="88" height="20" x="50" y="570" style="fill:#777;stroke:black;"/>
+   <text width="88" height="20" x="55" y="584" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="88" height="20" x="50" y="590" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="55" y="604" style="fill:black;" font-family="Arial" font-size="16px">name</text>
+   <rect width="88" height="20" x="50" y="610" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="55" y="624" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="88" height="20" x="50" y="630" style="fill:#fff;stroke:black;"/>
+   <text width="88" height="20" x="55" y="644" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="188" height="20" x="40" y="820" style="fill:#007;stroke:black;"/>
+   <text width="188" height="20" x="45" y="834" style="fill:#fff;" font-family="Arial" font-size="16px"> server_priority_declaration</text>
+   <rect width="188" height="20" x="40" y="840" style="fill:#777;stroke:black;"/>
+   <text width="188" height="20" x="45" y="854" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="188" height="20" x="40" y="860" style="fill:#fff;stroke:black;"/>
+   <text width="188" height="20" x="45" y="874" style="fill:black;" font-family="Arial" font-size="16px">serverID</text>
+   <rect width="188" height="20" x="40" y="880" style="fill:#fff;stroke:black;"/>
+   <text width="188" height="20" x="45" y="894" style="fill:black;" font-family="Arial" font-size="16px">clientID</text>
+   <rect width="188" height="20" x="40" y="900" style="fill:#fff;stroke:black;"/>
+   <text width="188" height="20" x="45" y="914" style="fill:black;" font-family="Arial" font-size="16px">instructionID</text>
+   <rect width="188" height="20" x="40" y="920" style="fill:#fff;stroke:black;"/>
+   <text width="188" height="20" x="45" y="934" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="188" height="20" x="40" y="940" style="fill:#fff;stroke:black;"/>
+   <text width="188" height="20" x="45" y="954" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="193" height="20" x="440" y="770" style="fill:#007;stroke:black;"/>
+   <text width="193" height="20" x="445" y="784" style="fill:#fff;" font-family="Arial" font-size="16px"> server_priority_instructions</text>
+   <rect width="193" height="20" x="440" y="790" style="fill:#777;stroke:black;"/>
+   <text width="193" height="20" x="445" y="804" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="193" height="20" x="440" y="810" style="fill:#fff;stroke:black;"/>
+   <text width="193" height="20" x="445" y="824" style="fill:black;" font-family="Arial" font-size="16px">name</text>
+   <rect width="193" height="20" x="440" y="830" style="fill:#fff;stroke:black;"/>
+   <text width="193" height="20" x="445" y="844" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="193" height="20" x="440" y="850" style="fill:#fff;stroke:black;"/>
+   <text width="193" height="20" x="445" y="864" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="130" height="20" x="840" y="820" style="fill:#007;stroke:black;"/>
+   <text width="130" height="20" x="845" y="834" style="fill:#fff;" font-family="Arial" font-size="16px"> server_priority_log</text>
+   <rect width="130" height="20" x="840" y="840" style="fill:#777;stroke:black;"/>
+   <text width="130" height="20" x="845" y="854" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="130" height="20" x="840" y="860" style="fill:#fff;stroke:black;"/>
+   <text width="130" height="20" x="845" y="874" style="fill:black;" font-family="Arial" font-size="16px">priorityID</text>
+   <rect width="130" height="20" x="840" y="880" style="fill:#fff;stroke:black;"/>
+   <text width="130" height="20" x="845" y="894" style="fill:black;" font-family="Arial" font-size="16px">statusID</text>
+   <rect width="130" height="20" x="840" y="900" style="fill:#fff;stroke:black;"/>
+   <text width="130" height="20" x="845" y="914" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="130" height="20" x="840" y="920" style="fill:#fff;stroke:black;"/>
+   <text width="130" height="20" x="845" y="934" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="151" height="20" x="460" y="930" style="fill:#007;stroke:black;"/>
+   <text width="151" height="20" x="465" y="944" style="fill:#fff;" font-family="Arial" font-size="16px"> server_priority_status</text>
+   <rect width="151" height="20" x="460" y="950" style="fill:#777;stroke:black;"/>
+   <text width="151" height="20" x="465" y="964" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="151" height="20" x="460" y="970" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="465" y="984" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="151" height="20" x="460" y="990" style="fill:#fff;stroke:black;"/>
+   <text width="151" height="20" x="465" y="1004" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+   <rect width="131" height="20" x="470" y="530" style="fill:#007;stroke:black;"/>
+   <text width="131" height="20" x="475" y="544" style="fill:#fff;" font-family="Arial" font-size="16px"> server_secrets</text>
+   <rect width="131" height="20" x="470" y="550" style="fill:#777;stroke:black;"/>
+   <text width="131" height="20" x="475" y="564" style="fill:black;" font-family="Arial" font-size="16px">ID</text>
+   <rect width="131" height="20" x="470" y="570" style="fill:#fff;stroke:black;"/>
+   <text width="131" height="20" x="475" y="584" style="fill:black;" font-family="Arial" font-size="16px">serverID</text>
+   <rect width="131" height="20" x="470" y="590" style="fill:#fff;stroke:black;"/>
+   <text width="131" height="20" x="475" y="604" style="fill:black;" font-family="Arial" font-size="16px">server_password</text>
+   <rect width="131" height="20" x="470" y="610" style="fill:#fff;stroke:black;"/>
+   <text width="131" height="20" x="475" y="624" style="fill:black;" font-family="Arial" font-size="16px">server_public_key</text>
+   <rect width="131" height="20" x="470" y="630" style="fill:#fff;stroke:black;"/>
+   <text width="131" height="20" x="475" y="644" style="fill:black;" font-family="Arial" font-size="16px">description</text>
+   <rect width="131" height="20" x="470" y="650" style="fill:#fff;stroke:black;"/>
+   <text width="131" height="20" x="475" y="664" style="fill:black;" font-family="Arial" font-size="16px">timestamp</text>
+</svg>

@@ -88,7 +88,7 @@
 				)
 			);
 	}
-	
+
 	// Get payload (xml or json)
 	switch ($_SERVER["CONTENT_TYPE"]) {
 		case "application/json":
@@ -109,7 +109,7 @@
 					)
 				);
 	}
-	
+
 	/*
 	// For test onlys
 	$payload = array();
@@ -130,18 +130,18 @@
 	else
 		$accountID = "1"; // Disabled account
 
-	$query = "SELECT CreateUpdateRemoveClient(?, ?);";
+	$query = "SELECT CreateUpdateRemoveClient(?, ?) AS statusCode;";
 
 	// prepare and execute query
-	$stmt = $conn->get_connection()->stmt_init();
+	$stmt = $conn->getConnection()->stmt_init();
 	$stmt->prepare($query);
 	$stmt->bind_param("ss", $payload["marketplace_purchase"]["account"]["login"], $accountID);
 	$stmt->execute();
-	$result = $stmt->get_result();		
+	$result = $stmt->get_result();
 	$stmt->close();
 
 	if (
-			$result == false ||
+			is_bool($result) ||
 			$result->num_rows != 1
 		)
 		die(
@@ -153,30 +153,31 @@
 				)
 			);
 
-	$response = array();
+	$res = array();
 
-	switch ($this->status_code) {
-		case "200":
-		case 200:
-			$response = array(
-				"code" => 200,
-				"message" => "Priority creation made with success"
-			);
-		case "504":
-		case 504:
-			$response = array(
-				"code" => 504,
-				"message" => "There is a problem, the DB seems to be full of work, please try again later"
-			);
-		default:
-			$response = array(
-				"code" => 400,
-				"message" => "Generic error"
-			);
-
-	}
+	while ($row = $result->fetch_array())
+		switch ($row["statusCode"]) {
+			case "200":
+			case 200:
+				$res = array(
+					"code" => 200,
+					"message" => "Priority creation made with success"
+				);
+				break;
+			case "504":
+			case 504:
+				$res = array(
+					"code" => 504,
+					"message" => "There is a problem, the DB seems to be full of work, please try again later"
+				);
+				break;
+			default:
+				$res = array(
+					"code" => 400,
+					"message" => "Generic error"
+				);
+		}
 
 	echo json_encode($response);
 
-	$conn->close_connection();
-?>
+	$conn->closeConnection();

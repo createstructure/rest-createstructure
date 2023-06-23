@@ -8,7 +8,7 @@
 	 * @author     Castellani Davide (@DavideC03) <help@castellanidavide.it>
 	 * @license    GNU
 	 * @link       https://github.com/createstructure/rest-createstructure
-	 */	
+	 */
 
     // Import(s)
     include_once "./core/splitter.php";
@@ -20,8 +20,8 @@
         if ($post != "")
             $data = json_decode($post, true);
     } catch (Exception $e) {
+        exit();
     }
-    //print_r($data);
 
     // Initialize splitter
     $splitter = new Splitter($data);
@@ -38,4 +38,3 @@
 
     // Final print
     echo json_encode($results);
-?>

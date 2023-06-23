@@ -12,7 +12,8 @@ jobs:
       name: UML
     steps:
     - uses: actions/checkout@v2
-    - name: Export UML    
+    - name: Export UML
+      continue-on-error: true
       uses: docker://rlespinasse/drawio-export:latest
       with:
         args: -f svg -o ./ docs
@@ -26,7 +27,6 @@ jobs:
         git push https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git -f
 
   upgrade-documentation:
-    needs: [UML-export]
     runs-on: ubuntu-latest
     environment:
       name: documentation
