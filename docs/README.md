@@ -7,7 +7,7 @@
 This repository contains the REST API created for the createstructure service.
 
 To get more info about how it works and how can you can contribute, please go to the [wiki](https://github.com/createstructure/rest-createstructure/wiki).
-![createstructure/rest-createstructure](https://opengraph.githubassets.com/375f595d3af5127754130ce33a0950c5da4e3cdd278c6e6c393c8c403beac8e5/createstructure/rest-createstructure)
+![createstructure/rest-createstructure](https://opengraph.githubassets.com/462b5d89804c2bc0a8bf6fe744c43044dc4714753b6330a68a4a09e474cc6faa/createstructure/rest-createstructure)
 ##  Class UML 
 ![Class UML](https://raw.githubusercontent.com/createstructure/rest-createstructure/main/docs/rest-createstructure-Class-UML.svg)
 ##  Directory structure 
@@ -23,6 +23,7 @@ To get more info about how it works and how can you can contribute, please go to
 │   │   ├── action.php # interface for any of the other actions
 │   │   ├── auth.php
 │   │   ├── create_repo.php
+│   │   ├── create_server.php
 │   │   ├── help.php
 │   │   ├── server_get_job_info.php
 │   │   ├── server_get_priority.php
@@ -63,13 +64,14 @@ To get more info about how it works and how can you can contribute, please go to
 │       └── server_secrets.sql
 └── docs # documentation
     ├── CHANGELOG.md
+    ├── ERD.svg
     ├── LICENSE
     ├── README.md
     ├── rest-createstructure-Class-UML.svg
     ├── rest-createstructure-ER.svg
     └── rest-createstructure.drawio
 
-7 directories, 47 files
+7 directories, 49 files
 ```
 ##  Database structure (ER) 
 
@@ -81,6 +83,7 @@ To get more info about how it works and how can you can contribute, please go to
 | Help | POST | Returns a message to help user to use this API | {"request": "help"} or {} | / | {"code": <code>, "message": <help_generic_message>, "help": {<REST_command_name>: {"name": <REST_command_name>, "type": <GET_or_POST>, "action": <functionality>, "request": <request_structure>, "URL": <REST_URL>, "response": <response_structure>, "notes": <description>}, ...}} | Gives to the user all the information to use this REST API |
 | Auth | POST | Check if account is it ok | {"request": "login", "payload": {"username": <GitHub_username>, "token": <Github_token>}} | / | {"code": <code>, "message": <ok_or_error_message>, "sub_info": {"name": <sub_name>, "active": <true/false>, "super": <true/false>, "max": {"day": <max_usages_for_day>, "h": <max_usages_for_hour>, "m": <max_usages_for_minute>}, "remaining": {"day": <remaining_usages_for_day>, "h": <remaining_usages_for_hour>, "m": <remaining_usages_for_minute>}}} | This is userfull to get any usefull info about a consumer |
 | Create Repository | POST | Permits user to create a repository | {"request": "create_repo", payload: {"token": <GitHub_token>, "username": <GitHub_username>, "answers": { "name": <New_repo_name> [, "template": <Template_to_use(eg. default or Owner/repo-template)>] [, "descr": <Description>] [, "prefix": <The_prefix_of_the_repo(if you want once)>] [, "private": <true/false>] [, "isOrg": <If_you_want_your_repo_in_an_organization(true/false)> , "org": <Name_of_the_org_if_isOrg_true> [, "team": <The_name_of_the_team_if_isOrg_true>] ]}}} | / | {"code": <code>, "message": <response_message>} | This REST API call permits to the consumer to ask to createstructure"s service to create a repository |
+| Create Server | POST | Permits to add a server to valid ones | {"request": "create_server", payload: {"token": <GitHub_token>, "username": <GitHub_username>, "server_name": <server_name>, "server_password": <server_password>, "server_description": <server_description>, "server_public_key": <server_public_key>} | / | {"code": <code>, "message": <response_message>} | This REST API call permits to add a server to valid ones, so it can start to contribute to the project |
 | Reserve a new repo to create (server-side) | POST | functionality | {"request": "server_reserve_job", "server_name": <server_name>, "server_password": <server_password>} | / | {"code": <code>, "message": <response_message>, "repoID": <repoID>} | Usefull for the server to reserve a repo to create it |
 | Get a new repo info to create it (server-side) | POST | functionality | {"request": "server_get_job_info", "server_name": <server_name>, "server_password": <server_password>, "repoID": <repoID>} | / | {"code": <code>, "message": <response_message>, "repo_info": <repo_info>} | Usefull for the server to ask a repo info to create it |
 | Set a repo job as done (server-side) | POST | functionality | {"request": "server_set_job_done", "server_name": <server_name>, "server_password": <server_password>, "repoID": <repoID>} | / | {"code": <code>, "message": <response_message>} | Usefull for the server to set repo job as done |
@@ -91,18 +94,22 @@ To get more info about how it works and how can you can contribute, please go to
 Repo containing the public part of the REST/API
 
 - [ Changelog ](#changelog)
-  - [[10.01.04] - 2022-03-12](#100104---2022-03-12)
-  - [[10.01.03] - 2022-01-05](#100103---2022-01-05)
-  - [[10.01.02] - 2021-12-19](#100102---2021-12-19)
-  - [[10.01.01] - 2021-12-10](#100101---2021-12-10)
-  - [[09.01.04] - 2021-07-10](#090104---2021-07-10)
+  - [\[10.01.05\] - 2023-06-23](#100105---2023-06-23)
+  - [\[10.01.04\] - 2022-03-12](#100104---2022-03-12)
+  - [\[10.01.03\] - 2022-01-05](#100103---2022-01-05)
+  - [\[10.01.02\] - 2021-12-19](#100102---2021-12-19)
+  - [\[10.01.01\] - 2021-12-10](#100101---2021-12-10)
+  - [\[09.01.04\] - 2021-07-10](#090104---2021-07-10)
     - [Changed](#changed)
-  - [[09.01.03] - 2021-07-08](#090103---2021-07-08)
+  - [\[09.01.03\] - 2021-07-08](#090103---2021-07-08)
     - [Changed](#changed-1)
-  - [[09.01.02] - 2021-07-08](#090102---2021-07-08)
+  - [\[09.01.02\] - 2021-07-08](#090102---2021-07-08)
     - [Changed](#changed-2)
-  - [[09.01.01] - 2021-06-19](#090101---2021-06-19)
+  - [\[09.01.01\] - 2021-06-19](#090101---2021-06-19)
     - [Added](#added)
+
+### [10.01.05] - 2023-06-23
+- Optimized code and fixed few bugs
 
 ### [10.01.04] - 2022-03-12
 - [Added charts automation](https://github.com/createstructure/libraries-createstructure/issues/21)
