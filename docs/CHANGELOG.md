@@ -2,7 +2,8 @@
 Repo containing the public part of the REST/API
 
 - [Changelog](#changelog)
-  - [\[10.01.04\] - 2023-06-23](#100104---2023-06-23)
+  - [\[10.01.05\] - 2023-06-23](#100105---2023-06-23)
+  - [\[10.01.04\] - 2022-03-12](#100104---2022-03-12)
   - [\[10.01.03\] - 2022-01-05](#100103---2022-01-05)
   - [\[10.01.02\] - 2021-12-19](#100102---2021-12-19)
   - [\[10.01.01\] - 2021-12-10](#100101---2021-12-10)
@@ -15,8 +16,11 @@ Repo containing the public part of the REST/API
   - [\[09.01.01\] - 2021-06-19](#090101---2021-06-19)
     - [Added](#added)
 
-## [10.01.04] - 2023-06-23
+## [10.01.05] - 2023-06-23
 - Optimized code and fixed few bugs
+
+## [10.01.04] - 2022-03-12
+- [Added charts automation](https://github.com/createstructure/libraries-createstructure/issues/21)
 
 ## [10.01.03] - 2022-01-05
 - [Add sponsorship button](https://github.com/createstructure/createstructure.github.io/issues/36)
